@@ -8,7 +8,7 @@ module.exports = {
       host: "127.0.0.1",
       user: process.env.USERNAME,
       password: process.env.PASSWORD,
-      database: "recipes"
+      database: "recipebook"
     },
     useNullAsDefault: true,
     migrations: {
