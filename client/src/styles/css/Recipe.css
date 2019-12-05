@@ -1,0 +1,29 @@
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card {
+  min-width: 500px;
+  min-height: 400px;
+  margin-right: 10px;
+}
+
+.recipeImage {
+  margin: 0 auto;
+}
+
+.add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add .picture {
+  width: 30%;
+}
+
+.add .words {
+  width: 70%;
+}

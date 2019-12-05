@@ -12,7 +12,7 @@ const Recipes = () => {
     });
   }, []);
   return (
-    <div>
+    <div className="cards">
       {recipes.map((recipe, i) => {
         return (
           <Link to={`/recipe/${i}`}>

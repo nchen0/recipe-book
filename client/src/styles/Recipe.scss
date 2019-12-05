@@ -1,0 +1,25 @@
+.cards {
+  display: flex;
+}
+
+.card {
+  min-width: 500px;
+  min-height: 400px;
+  margin-right: 10px;
+}
+
+.recipeImage {
+  margin: 0 auto;
+}
+
+.add {
+  display: flex;
+
+  .picture {
+    width: 30%;
+  }
+
+  .words {
+    width: 70%;
+  }
+}
