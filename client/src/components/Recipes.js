@@ -16,7 +16,7 @@ const Recipes = () => {
       {recipes.map((recipe, i) => {
         return (
           <Link to={`/recipe/${i}`}>
-            <div>{recipe.name}</div>
+            <Recipe recipe={recipe} />
           </Link>
 
           // <Link to={`/recipe/${recipe.name}`}>
