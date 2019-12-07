@@ -2,17 +2,43 @@
 require("dotenv").config();
 
 module.exports = {
+  // development: {
+  //   client: "mysql",
+  //   connection: {
+  //     host: "127.0.0.1",
+  //     user: process.env.DB_USERNAME,
+  //     password: process.env.PASSWORD,
+  //     database: "recipebook"
+  //   },
+  //   useNullAsDefault: true,
+  //   migrations: {
+  //     directory: "./data/migrations"
+  //   },
+  //   seeds: {
+  //     directory: "./data/seeds"
+  //   }
+  //   // pool: {
+  //   //   afterCreate: (conn, done) => {
+  //   //     // runs after a connection is made to the sqlite engine
+  //   //     conn.run("PRAGMA foreign_keys = ON", done); // turn on FK enforcement
+  //   //   }
+  //   // }
+  // },
   development: {
-    client: "mysql",
+    client: "postgresql",
     connection: {
-      host: "127.0.0.1",
+      database: "recipebook",
       user: process.env.DB_USERNAME,
-      password: process.env.PASSWORD,
-      database: "recipebook"
+      password: process.env.PASSWORD
     },
     useNullAsDefault: true,
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
-      directory: "./data/migrations"
+      directory: "./data/migrations",
+      tableName: "knex_migrations"
     },
     seeds: {
       directory: "./data/seeds"
@@ -22,7 +48,6 @@ module.exports = {
     //     // runs after a connection is made to the sqlite engine
     //     conn.run("PRAGMA foreign_keys = ON", done); // turn on FK enforcement
     //   }
-    // }
   },
   production: {
     client: "postgresql",
