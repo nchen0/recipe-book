@@ -26,11 +26,8 @@ module.exports = {
   // },
   development: {
     client: "postgresql",
-    connection: {
-      database: "recipebook",
-      user: process.env.DB_USERNAME,
-      password: process.env.PASSWORD
-    },
+    connection:
+      "postgres://mrfcxirslzhsil:b51b299a83d807a07baa4a8ef943f047f86e6043a3a5f252d73cbfd52dc4ca6e@ec2-50-19-95-77.compute-1.amazonaws.com:5432/d7n77cemjbvt10",
     useNullAsDefault: true,
     pool: {
       min: 2,
@@ -42,7 +39,8 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds"
-    }
+    },
+    ssl: true
     // pool: {
     //   afterCreate: (conn, done) => {
     //     // runs after a connection is made to the sqlite engine
