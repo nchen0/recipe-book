@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Recipes = () => {
   const { recipes, setRecipes } = useContext(RecipeContext);
   useEffect(() => {
-    axios.get("http://localhost:8000/recipes").then(result => {
+    axios.get(`${process.env.REACT_APP_DB}}/recipes`).then(result => {
       setRecipes(result.data);
     });
   }, []);
