@@ -1,0 +1,70 @@
+.add {
+  display: flex;
+  margin-top: 35px;
+
+  .picture {
+    width: 30%;
+  }
+
+  .words {
+    width: 70%;
+    text-align: left;
+    padding-left: 20%;
+    input {
+      width: 600px;
+    }
+    .label {
+      margin-bottom: 0;
+    }
+
+    .addTitle {
+      .titleInput {
+        height: 35px;
+      }
+    }
+
+    .addDescription {
+      margin-top: 16px;
+      .descriptionInput {
+        height: 80px;
+      }
+    }
+
+    .addIngredients {
+      margin-top: 16px;
+
+      .ingredientsInput {
+        width: 600px;
+        height: 100px;
+      }
+    }
+
+    .addDirections {
+      margin-top: 16px;
+      .directionsInput {
+        width: 600px;
+        height: 100px;
+      }
+    }
+
+    .radios {
+      margin-top: 16px;
+      margin-bottom: 30px;
+      margin-left: -13px;
+      input {
+        width: 50px;
+        height: 15px;
+      }
+    }
+
+    .buttons {
+      .btn-success {
+        margin-right: 20px;
+      }
+      .btn {
+        width: 200px;
+        height: 45px;
+      }
+    }
+  }
+}

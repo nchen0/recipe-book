@@ -1,0 +1,74 @@
+.add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 35px;
+}
+
+.add .picture {
+  width: 30%;
+}
+
+.add .words {
+  width: 70%;
+  text-align: left;
+  padding-left: 20%;
+}
+
+.add .words input {
+  width: 600px;
+}
+
+.add .words .label {
+  margin-bottom: 0;
+}
+
+.add .words .addTitle .titleInput {
+  height: 35px;
+}
+
+.add .words .addDescription {
+  margin-top: 16px;
+}
+
+.add .words .addDescription .descriptionInput {
+  height: 80px;
+}
+
+.add .words .addIngredients {
+  margin-top: 16px;
+}
+
+.add .words .addIngredients .ingredientsInput {
+  width: 600px;
+  height: 100px;
+}
+
+.add .words .addDirections {
+  margin-top: 16px;
+}
+
+.add .words .addDirections .directionsInput {
+  width: 600px;
+  height: 100px;
+}
+
+.add .words .radios {
+  margin-top: 16px;
+  margin-bottom: 30px;
+  margin-left: -13px;
+}
+
+.add .words .radios input {
+  width: 50px;
+  height: 15px;
+}
+
+.add .words .buttons .btn-success {
+  margin-right: 20px;
+}
+
+.add .words .buttons .btn {
+  width: 200px;
+  height: 45px;
+}

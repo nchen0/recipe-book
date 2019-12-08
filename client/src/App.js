@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import "./styles/css/Recipe.css";
+import "./styles/css/AddRecipe.css";
 import Navbar from "./components/Navbar";
 import RecipeContextProvider from "./contexts/RecipeContext";
 import Recipes from "./components/Recipes";
