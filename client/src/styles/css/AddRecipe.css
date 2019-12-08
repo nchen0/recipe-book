@@ -9,6 +9,26 @@
   width: 30%;
 }
 
+.add .picture .useLink {
+  text-decoration: underline;
+}
+
+.add .picture .useLink:hover {
+  cursor: pointer;
+}
+
+.add .picture .addPictureLink {
+  text-align: left;
+}
+
+.add .picture .addPictureLink .addPictureLabel {
+  margin-bottom: 0;
+}
+
+.add .picture .addPictureLink .addPictureInput {
+  width: 300px;
+}
+
 .add .words {
   width: 70%;
   text-align: left;

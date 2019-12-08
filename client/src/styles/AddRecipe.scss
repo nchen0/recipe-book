@@ -4,6 +4,24 @@
 
   .picture {
     width: 30%;
+
+    .useLink {
+      text-decoration: underline;
+    }
+    .useLink:hover {
+      cursor: pointer;
+    }
+
+    .addPictureLink {
+      text-align: left;
+
+      .addPictureLabel {
+        margin-bottom: 0;
+      }
+      .addPictureInput {
+        width: 300px;
+      }
+    }
   }
 
   .words {

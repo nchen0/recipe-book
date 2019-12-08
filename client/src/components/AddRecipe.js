@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Uploader from "./Uploader";
 
 const AddRecipe = () => {
+  const [useLink, setLink] = useState(false);
+
+  const setUseLink = () => {
+    setLink(true);
+  };
+  console.log("useLink is now: ", useLink);
+
   return (
     <div class="container add">
       <div class="picture">
-        <Uploader />
+        {useLink ? (
+          <div class="addPictureLink">
+            <p class="addPictureLabel">URL</p>
+            <input class="addPictureInput" placeholder="Add Picture URL" />
+          </div>
+        ) : (
+          <div class="useImage">
+            <Uploader />
+            <p>
+              or use a{" "}
+              <span onClick={setUseLink} class="useLink">
+                link instead
+              </span>
+              .
+            </p>
+          </div>
+        )}
       </div>
       <div class="words">
         <div class="addTitle">
