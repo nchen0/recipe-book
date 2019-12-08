@@ -7,7 +7,6 @@ const AddRecipe = () => {
   const setUseLink = () => {
     setLink(true);
   };
-  console.log("useLink is now: ", useLink);
 
   return (
     <div class="container add">
@@ -54,7 +53,9 @@ const AddRecipe = () => {
         </div>
         <div class="buttons">
           <button class="btn btn-success">Save</button>
-          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn btn-secondary" onClick={() => (window.location.href = "/")}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>
