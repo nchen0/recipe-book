@@ -5,7 +5,9 @@ import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
 
 const Recipes = () => {
-  const { recipes, setRecipes } = useContext(RecipeContext);
+  const { recipes, setRecipes, clickRegister } = useContext(RecipeContext);
+  console.log("clickRegister is: ", clickRegister);
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_DB}/recipes`).then(result => {
       setRecipes(result.data);
@@ -24,6 +26,7 @@ const Recipes = () => {
           // </Link>
         );
       })}
+      {clickRegister ? <div>Hi</div> : null}
     </div>
   );
 };

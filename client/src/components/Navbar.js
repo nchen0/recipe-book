@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import LoginModal from "./forms/LoginModal";
 
 const Navbar = () => {
   return (
@@ -66,7 +67,7 @@ const Navbar = () => {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
               Register
             </a>
           </li>
@@ -88,6 +89,7 @@ const Navbar = () => {
             Search
           </button>
         </form>
+        <LoginModal />
       </div>
     </nav>
   );
