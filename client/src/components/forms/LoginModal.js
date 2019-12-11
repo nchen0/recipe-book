@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import axios from "axios";
 
 const LoginModal = () => {
   const { clickRegister, setClickRegister } = useContext(RecipeContext);
+  const [input, setInput] = useState({});
   const toggleRegister = () => {
     setClickRegister(true);
   };
@@ -10,6 +12,24 @@ const LoginModal = () => {
   const toggleLogin = () => {
     setClickRegister(false);
   };
+
+  const inputValue = e => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const submitAccount = () => {
+    if (clickRegister) {
+      // Creating new account, so will hit the register api:
+      const user = input;
+      delete user.verifyPassword;
+      axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(response => {
+        console.log("response: ", response);
+      });
+    } else {
+      axios.post(`${process.env.REACT_APP_DB}/auth/login`);
+    }
+  };
+
   return (
     <div>
       {clickRegister ? (
@@ -32,15 +52,31 @@ const LoginModal = () => {
                 </button>
               </div>
               <div class="modal-body">
-                <input class="form-control registrationInput" type="text" placeholder="Email" />
-                <input class="form-control registrationInput" type="text" placeholder="Password" />
+                <input
+                  class="form-control registrationInput"
+                  onChange={inputValue}
+                  type="text"
+                  placeholder="Email"
+                  name="username"
+                />
+                <input
+                  class="form-control registrationInput"
+                  onChange={inputValue}
+                  name="password"
+                  type="text"
+                  placeholder="Password"
+                />
                 <input
                   class="form-control registrationInput"
                   type="text"
+                  onChange={inputValue}
                   placeholder="Verify Password"
+                  name="verifyPassword"
                 />
 
-                <button class="btn btn-success registerButton">Create Account</button>
+                <button class="btn btn-success registerButton" onClick={submitAccount}>
+                  Create Account
+                </button>
                 <p class="registrationToggleText">Or sign up with</p>
                 <button class="googleButton">
                   <img
