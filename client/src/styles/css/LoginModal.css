@@ -1,0 +1,76 @@
+.modal-content {
+  height: 500px;
+  width: 450px;
+}
+
+.modal-content .modal-header {
+  border-bottom: none;
+}
+
+.modal-content .modal-header .modal-title {
+  margin-left: 40%;
+  font-size: 25px;
+}
+
+.modal-content .modal-body {
+  padding-top: 5px;
+}
+
+.modal-content .modal-body .registrationInput,
+.modal-content .modal-body .loginInput {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 13px;
+  height: 45px;
+}
+
+.modal-content .modal-body .registerButton,
+.modal-content .modal-body .loginButton {
+  margin-top: 5px;
+  width: 70%;
+  height: 45px;
+}
+
+.modal-content .modal-body .registrationToggleText,
+.modal-content .modal-body .loginToggleText {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: #9b9b9b;
+}
+
+.modal-content .modal-body .googleButton {
+  background: white;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+  width: 150px;
+  height: 37px;
+}
+
+.modal-content .modal-body .googleButton .googleText {
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.modal-content .modal-body .googleButton:hover {
+  background: #f1f1f1;
+}
+
+.modal-content .modal-body .alreadyToggle {
+  margin-top: 60px;
+  color: #7a7a7a;
+}
+
+.modal-content .modal-body .registerToggle,
+.modal-content .modal-body .loginToggle {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-content .modal-body .registerToggle:hover,
+.modal-content .modal-body .loginToggle:hover {
+  color: #0303c2;
+}
+
+.modal-content .modal-body .loginMember {
+  margin-top: 120px;
+}

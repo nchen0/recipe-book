@@ -25,33 +25,37 @@ const LoginModal = () => {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Login
+                  Register
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <input class="form-control" type="text" placeholder="Email" />
-                <input class="form-control" type="text" placeholder="Password" />
-                <button class="btn btn-success">Login</button>
-                <p>Or sign up with</p>
-                <img
-                  src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
-                  alt="googlebutton"
+                <input class="form-control registrationInput" type="text" placeholder="Email" />
+                <input class="form-control registrationInput" type="text" placeholder="Password" />
+                <input
+                  class="form-control registrationInput"
+                  type="text"
+                  placeholder="Verify Password"
                 />
-                <span className="google-text"> Google</span>
-                <p>
-                  Already a member? <span onClick={toggleLogin}>Login Now</span>
+
+                <button class="btn btn-success registerButton">Create Account</button>
+                <p class="registrationToggleText">Or sign up with</p>
+                <button class="googleButton">
+                  <img
+                    src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
+                    alt="googlebutton"
+                  />
+                  <span className="googleText"> Google</span>
+                </button>
+
+                <p class="alreadyToggle">
+                  Already a member?{" "}
+                  <span class="registerToggle" onClick={toggleLogin}>
+                    Login Now
+                  </span>
                 </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
               </div>
             </div>
           </div>
@@ -76,26 +80,25 @@ const LoginModal = () => {
                 </button>
               </div>
               <div class="modal-body">
-                <input class="form-control" type="text" placeholder="Email" />
-                <input class="form-control" type="text" placeholder="Password" />
-                <button class="btn btn-success">Login</button>
-                <p>Or login with</p>
-                <img
-                  src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
-                  alt="googlebutton"
-                />
-                <span className="google-text"> Google</span>
-                <p>
-                  Not a member? <span onClick={toggleRegister}>Sign up Now</span>
+                <input class="form-control loginInput" type="text" placeholder="Email" />
+                <input class="form-control loginInput" type="text" placeholder="Password" />
+                <button class="btn btn-success loginButton">Login</button>
+                <p class="loginToggleText">Or login with</p>
+
+                <button class="googleButton">
+                  <img
+                    src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
+                    alt="googlebutton"
+                  />
+                  <span className="googleText"> Google</span>
+                </button>
+
+                <p class="alreadyToggle loginMember">
+                  Not a member?{" "}
+                  <span class="loginToggle" onClick={toggleRegister}>
+                    Sign up Now
+                  </span>
                 </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
               </div>
             </div>
           </div>

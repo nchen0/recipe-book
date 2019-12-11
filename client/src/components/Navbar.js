@@ -63,12 +63,12 @@ const Navbar = () => {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              Login
+              My Recipes
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
-              Register
+              Login/Register
             </a>
           </li>
           <li class="nav-item">
