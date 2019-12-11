@@ -5,6 +5,7 @@ const db = require("../data/dbConfig.js");
 router.use(express.json());
 
 router.get("/", (req, res) => {
+  console.log("recipe");
   db("recipes")
     .then(recipes => {
       res.json(recipes);

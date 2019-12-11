@@ -30,6 +30,10 @@ const LoginModal = () => {
     }
   };
 
+  const toggleRegisterLogin = () => {
+    setInput({});
+  };
+
   return (
     <div>
       {clickRegister ? (

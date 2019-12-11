@@ -7,6 +7,7 @@ const { generateToken, validateUser } = require("../helpers/helper-functions");
 router.use(express.json());
 
 router.get("/users", (req, res) => {
+  console.log("hello");
   db("users")
     .then(users => {
       res.json(users);
