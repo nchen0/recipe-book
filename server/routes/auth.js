@@ -38,6 +38,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+  console.log("req is: ", req);
   const validatedUser = validateUser(req);
   if (validatedUser.error) {
     return res.status(400).send(validatedUser.error.details[0].message);

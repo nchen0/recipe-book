@@ -4,7 +4,7 @@ import { RecipeContext } from "../contexts/RecipeContext";
 import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
 
-const Recipes = () => {
+const Recipes = props => {
   const { recipes, setRecipes, clickRegister } = useContext(RecipeContext);
   console.log("clickRegister is: ", clickRegister);
 

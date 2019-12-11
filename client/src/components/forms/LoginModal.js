@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import axios from "axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
-const LoginModal = () => {
+const LoginModal = props => {
   const { clickRegister, setClickRegister } = useContext(RecipeContext);
+  const { loginData, setLogin } = useContext(AuthContext);
   const [input, setInput] = useState({});
   const toggleRegister = () => {
     setClickRegister(true);
@@ -18,15 +20,21 @@ const LoginModal = () => {
   };
 
   const submitAccount = () => {
+    const user = input;
+    delete user.verifyPassword;
     if (clickRegister) {
       // Creating new account, so will hit the register api:
-      const user = input;
-      delete user.verifyPassword;
       axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(response => {
         console.log("response: ", response);
       });
     } else {
-      axios.post(`${process.env.REACT_APP_DB}/auth/login`);
+      console.log("user is: ", user);
+      axios.post(`${process.env.REACT_APP_DB}/auth/login`, user).then(response => {
+        setLogin({ ...loginData, loggedIn: true });
+        console.log("loggedIn is: ", loginData);
+        // window.location.href = "/";
+        console.log("props is: ", props);
+      });
     }
   };
 
@@ -67,12 +75,12 @@ const LoginModal = () => {
                   class="form-control registrationInput"
                   onChange={inputValue}
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                 />
                 <input
                   class="form-control registrationInput"
-                  type="text"
+                  type="password"
                   onChange={inputValue}
                   placeholder="Verify Password"
                   name="verifyPassword"
@@ -120,9 +128,23 @@ const LoginModal = () => {
                 </button>
               </div>
               <div class="modal-body">
-                <input class="form-control loginInput" type="text" placeholder="Email" />
-                <input class="form-control loginInput" type="text" placeholder="Password" />
-                <button class="btn btn-success loginButton">Login</button>
+                <input
+                  class="form-control loginInput"
+                  type="text"
+                  onChange={inputValue}
+                  name="username"
+                  placeholder="Email"
+                />
+                <input
+                  class="form-control loginInput"
+                  type="password"
+                  onChange={inputValue}
+                  name="password"
+                  placeholder="Password"
+                />
+                <button class="btn btn-success loginButton" onClick={submitAccount}>
+                  Login
+                </button>
                 <p class="loginToggleText">Or login with</p>
 
                 <button class="googleButton">

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginModal from "./forms/LoginModal";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
+  const { loginData, setLogin } = useContext(AuthContext);
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/">
@@ -67,9 +70,15 @@ const Navbar = () => {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
-              Login/Register
-            </a>
+            {loginData.loggedIn ? (
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+                Logout
+              </a>
+            ) : (
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+                Login/Register
+              </a>
+            )}
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/add">
