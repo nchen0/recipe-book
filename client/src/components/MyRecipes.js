@@ -5,14 +5,14 @@ import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
 
 const MyRecipes = props => {
-  const { recipes, setRecipes, clickRegister } = useContext(RecipeContext);
+  const { myRecipes, setMyRecipes, clickRegister } = useContext(RecipeContext);
   console.log("clickRegister is: ", clickRegister);
 
   useEffect(() => {
     let promises = [];
     promises.push(
       axios.get(`${process.env.REACT_APP_DB}/recipes`).then(result => {
-        setRecipes(result.data);
+        setMyRecipes(result.data);
       })
     );
     promises.push(
@@ -39,7 +39,7 @@ const MyRecipes = props => {
   }, []);
   return (
     <div className="cards">
-      {recipes.map((recipe, i) => {
+      {myRecipes.map((recipe, i) => {
         return (
           <Link to={`/recipe/${i}`}>
             <Recipe recipe={recipe} />
