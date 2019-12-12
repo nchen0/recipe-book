@@ -9,13 +9,17 @@ const Recipes = props => {
   console.log("clickRegister is: ", clickRegister);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_DB}/recipes`).then(result => {
-      setRecipes(result.data);
-    });
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_RECIPEDB_ID}&app_key=${process.env.REACT_APP_RECIPEDB_APPKEY}`
+      )
+      .then(response => {
+        console.log("response is: ", response);
+      });
   }, []);
   return (
     <div className="cards">
-      {recipes.map((recipe, i) => {
+      {/* {recipes.map((recipe, i) => {
         return (
           <Link to={`/recipe/${i}`}>
             <Recipe recipe={recipe} />
@@ -25,7 +29,7 @@ const Recipes = props => {
           //   <Recipe recipe={recipe} />
           // </Link>
         );
-      })}
+      })} */}
       {clickRegister ? <div>Hi</div> : null}
     </div>
   );

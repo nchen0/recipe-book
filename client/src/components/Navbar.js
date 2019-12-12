@@ -4,6 +4,9 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const { loginData, setLogin } = useContext(AuthContext);
+  const logout = () => {
+    setLogin({ loggedIn: false });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("username")) {
@@ -71,13 +74,13 @@ const Navbar = () => {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/my-recipes">
               My Recipes
             </a>
           </li>
           <li class="nav-item">
             {loginData.loggedIn ? (
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+              <a class="nav-link" href="#" onClick={logout}>
                 Logout
               </a>
             ) : (
