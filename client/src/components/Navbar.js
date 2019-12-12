@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import LoginModal from "./forms/LoginModal";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const { loginData, setLogin } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (localStorage.getItem("username")) {
+      setLogin({ loggedIn: true });
+    }
+  }, []);
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

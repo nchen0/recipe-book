@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const LoginModal = props => {
+  let closeModalButton = document.querySelector(".close");
   const { clickRegister, setClickRegister } = useContext(RecipeContext);
   const { loginData, setLogin } = useContext(AuthContext);
   const [input, setInput] = useState({});
@@ -25,16 +26,22 @@ const LoginModal = props => {
     if (clickRegister) {
       // Creating new account, so will hit the register api:
       axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(response => {
-        console.log("response: ", response);
+        setLogin({ ...loginData, loggedIn: true });
+        closeModalButton.click();
+        localStorage.setItem("username", user.username);
       });
     } else {
       console.log("user is: ", user);
-      axios.post(`${process.env.REACT_APP_DB}/auth/login`, user).then(response => {
-        setLogin({ ...loginData, loggedIn: true });
-        console.log("loggedIn is: ", loginData);
-        // window.location.href = "/";
-        console.log("props is: ", props);
-      });
+      axios
+        .post(`${process.env.REACT_APP_DB}/auth/login`, user)
+        .then(response => {
+          setLogin({ ...loginData, loggedIn: true });
+          closeModalButton.click();
+          localStorage.setItem("username", user.username);
+        })
+        .catch(err => {
+          console.log("error is: ", err);
+        });
     }
   };
 
