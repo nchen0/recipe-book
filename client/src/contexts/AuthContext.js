@@ -9,7 +9,9 @@ const AuthContextProvider = props => {
   const [clickRegister, setClickRegister] = useState(false);
 
   return (
-    <AuthContext.Provider value={{ loginData, setLogin }}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ loginData, setLogin, clickRegister, setClickRegister }}>
+      {props.children}
+    </AuthContext.Provider>
   );
 };
 

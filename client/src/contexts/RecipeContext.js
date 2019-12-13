@@ -1,16 +1,13 @@
-import React, { Component, createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const RecipeContext = createContext();
 
 const RecipeContextProvider = props => {
   const [myRecipes, setMyRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
-  const [clickRegister, setClickRegister] = useState(false);
 
   return (
-    <RecipeContext.Provider
-      value={{ recipes, setRecipes, myRecipes, setMyRecipes, clickRegister, setClickRegister }}
-    >
+    <RecipeContext.Provider value={{ recipes, setRecipes, myRecipes, setMyRecipes }}>
       {props.children}
     </RecipeContext.Provider>
   );

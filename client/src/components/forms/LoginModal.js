@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const LoginModal = props => {
   let closeModalButton = document.querySelector(".close");
-  const { clickRegister, setClickRegister } = useContext(RecipeContext);
+  const { clickRegister, setClickRegister } = useContext(AuthContext);
   const { loginData, setLogin } = useContext(AuthContext);
   const [input, setInput] = useState({});
   const toggleRegister = () => {
@@ -43,10 +43,6 @@ const LoginModal = props => {
           console.log("error is: ", err);
         });
     }
-  };
-
-  const toggleRegisterLogin = () => {
-    setInput({});
   };
 
   return (

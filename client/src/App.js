@@ -8,7 +8,6 @@ import RecipeContextProvider from "./contexts/RecipeContext";
 import Recipes from "./components/Recipes";
 import MyRecipes from "./components/MyRecipes";
 import { Route } from "react-router-dom";
-import ViewRecipe from "./components/ViewRecipe";
 import AddRecipe from "./components/AddRecipe";
 import AuthContextProvider from "./contexts/AuthContext";
 import ViewMyRecipes from "./components/ViewMyRecipes";
