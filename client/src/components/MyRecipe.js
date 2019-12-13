@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { RecipeContext } from "../contexts/RecipeContext";
 
 const MyRecipe = props => {
+  console.log("props is: ", props);
   return (
     <div className="card">
       <img

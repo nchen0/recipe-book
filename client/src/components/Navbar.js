@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import LoginModal from "./forms/LoginModal";
 import { AuthContext } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { loginData, setLogin } = useContext(AuthContext);
+
   const logout = () => {
     setLogin({ loggedIn: false });
+    localStorage.removeItem("username");
   };
 
   useEffect(() => {
@@ -16,9 +19,9 @@ const Navbar = () => {
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">
+      <Link class="navbar-brand" to={"/"}>
         Recipe Book
-      </a>
+      </Link>
       <button
         class="navbar-toggler"
         type="button"
@@ -34,65 +37,30 @@ const Navbar = () => {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">
+            <Link class="nav-link" to={"/"}>
               Home <span class="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">
-              Disabled
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/my-recipes">
+            <Link class="nav-link" to={"/my-recipes"}>
               My Recipes
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
             {loginData.loggedIn ? (
-              <a class="nav-link" href="#" onClick={logout}>
+              <Link class="nav-link" to={"#"} onClick={logout}>
                 Logout
-              </a>
+              </Link>
             ) : (
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+              <Link class="nav-link" to={"#"} data-toggle="modal" data-target="#exampleModal">
                 Login/Register
-              </a>
+              </Link>
             )}
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/add">
+            <Link class="nav-link" to={"/add"}>
               Add
-            </a>
+            </Link>
           </li>
         </ul>
 
