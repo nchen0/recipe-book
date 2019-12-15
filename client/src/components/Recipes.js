@@ -7,15 +7,18 @@ import { Link } from "react-router-dom";
 const Recipes = props => {
   const { recipes, setRecipes } = useContext(RecipeContext);
   useEffect(() => {
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_RECIPEDB_ID}&app_key=${process.env.REACT_APP_RECIPEDB_APPKEY}`
-      )
-      .then(response => {
-        setRecipes(response.data.hits);
-      });
+    if (!recipes.length) {
+      axios
+        .get(
+          `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+        )
+        .then(response => {
+          console.log("response is: ", response);
+          setRecipes(response.data.recipes);
+        });
+    }
   }, []);
-  console.log("recipes is: ", recipes);
+
   return (
     <div className="cards">
       {recipes.map((recipe, i) => {
