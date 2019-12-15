@@ -7,16 +7,14 @@ import { Link } from "react-router-dom";
 const Recipes = props => {
   const { recipes, setRecipes } = useContext(RecipeContext);
   useEffect(() => {
-    if (!recipes.length) {
-      axios
-        .get(
-          `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
-        )
-        .then(response => {
-          console.log("response is: ", response);
-          setRecipes(response.data.recipes);
-        });
-    }
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+      )
+      .then(response => {
+        console.log("response is: ", response);
+        setRecipes(response.data.recipes);
+      });
   }, []);
 
   return (
