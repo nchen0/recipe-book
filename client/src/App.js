@@ -11,6 +11,7 @@ import { Route } from "react-router-dom";
 import AddRecipe from "./components/AddRecipe";
 import AuthContextProvider from "./contexts/AuthContext";
 import ViewMyRecipes from "./components/ViewMyRecipes";
+import ViewRecipe from "./components/ViewRecipe";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <RecipeContextProvider>
           <Navbar />
           <Route exact path="/" component={Recipes} />
+          <Route exact path="/recipe/:id" component={ViewRecipe} />
           <Route exact path="/my-recipes" component={MyRecipes} />
           <Route exact path="/my-recipe/:id" component={ViewMyRecipes} />
         </RecipeContextProvider>
