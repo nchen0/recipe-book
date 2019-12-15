@@ -10,7 +10,7 @@ const ViewRecipe = () => {
     if (!recipes.length) {
       axios
         .get(
-          `https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+          `${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
         )
         .then(response => {
           setRecipes(response.data.recipes);

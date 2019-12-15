@@ -20,7 +20,7 @@ class Uploader extends React.Component {
     return (
       <div>
         {hasPictures ? (
-          <img src={this.state.pictures[0].name} />
+          <img src={this.state.pictures[0].name} alt="added" />
         ) : (
           <ImageUploader
             withIcon={true}

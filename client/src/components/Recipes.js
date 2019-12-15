@@ -4,13 +4,13 @@ import { RecipeContext } from "../contexts/RecipeContext";
 import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
 
-const Recipes = props => {
+const Recipes = () => {
   const { recipes, setRecipes } = useContext(RecipeContext);
   useEffect(() => {
     if (!recipes.length) {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+          `${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
         )
         .then(response => {
           console.log("response is: ", response);

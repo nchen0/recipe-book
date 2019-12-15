@@ -8,6 +8,7 @@ const MyRecipe = props => {
         height="225px"
         width="400px"
         class="recipeImage"
+        alt="placeholder"
       />
       <div>{props.recipe.name}</div>
       <div>{props.recipe.ingredients}</div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Uploader from "./Uploader";
+import { Link } from "react-router-dom";
 
 const AddRecipe = () => {
   const [useLink, setLink] = useState(false);
@@ -53,9 +54,9 @@ const AddRecipe = () => {
         </div>
         <div class="buttons">
           <button class="btn btn-success">Save</button>
-          <button class="btn btn-secondary" onClick={() => (window.location.href = "/")}>
+          <Link class="btn btn-secondary" to={"/"}>
             Cancel
-          </button>
+          </Link>
         </div>
       </div>
     </div>

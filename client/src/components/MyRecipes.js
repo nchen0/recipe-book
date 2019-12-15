@@ -12,7 +12,6 @@ const MyRecipes = props => {
       setMyRecipes(result.data);
     });
   }, []);
-  console.log("myRecipes is: ", myRecipes);
   return (
     <div className="cards">
       {myRecipes.map((recipe, i) => {

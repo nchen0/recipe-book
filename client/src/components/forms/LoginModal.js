@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
-import { RecipeContext } from "../../contexts/RecipeContext";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-const LoginModal = props => {
+const LoginModal = () => {
   let closeModalButton = document.querySelector(".close");
   const { clickRegister, setClickRegister } = useContext(AuthContext);
   const { loginData, setLogin } = useContext(AuthContext);
@@ -25,13 +24,12 @@ const LoginModal = props => {
     delete user.verifyPassword;
     if (clickRegister) {
       // Creating new account, so will hit the register api:
-      axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(response => {
+      axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(() => {
         setLogin({ ...loginData, loggedIn: true });
         closeModalButton.click();
         localStorage.setItem("username", user.username);
       });
     } else {
-      console.log("user is: ", user);
       axios
         .post(`${process.env.REACT_APP_DB}/auth/login`, user)
         .then(response => {

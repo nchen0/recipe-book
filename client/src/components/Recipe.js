@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { Route } from "react-router-dom";
-import { RecipeContext } from "../contexts/RecipeContext";
+import React from "react";
 
 const Recipe = ({ recipe }) => {
   return (
     <div className="card">
-      <img src={recipe.image} height="225px" width="300px" class="recipeImage" />
+      <img src={recipe.image} height="225px" width="300px" class="recipeImage" alt="placeholder" />
       <div>{recipe.title}</div>
     </div>
   );
