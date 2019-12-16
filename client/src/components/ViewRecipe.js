@@ -1,12 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 import axios from "axios";
 
 const ViewRecipe = () => {
-  const { recipes, setRecipes } = useContext(RecipeContext);
+  const { recipes, setRecipes, search } = useContext(RecipeContext);
+  const [individualRecipe, setIndividualRecipe] = useState("");
+  const [random, setRandom] = useState(Math.random());
+  const reRender = () => setRandom(Math.random());
 
   // Take care of refreshing the page.
   useEffect(() => {
+    console.log("hello");
     if (!recipes.length) {
       axios
         .get(
@@ -16,17 +20,43 @@ const ViewRecipe = () => {
           setRecipes(response.data.recipes);
         });
     }
+    // } else if (search) {
+    //   axios
+    //     .get(
+    //       `${process.env.REACT_APP_API}/recipes/${recipe.id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+    //     )
+    //     .then(response => {
+    //       console.log("response2 here is: ", response);
+    //       setIndividualRecipe(response.data);
+    //     });
+    // }
   }, []);
+
   let id = Number(window.location.pathname.split("/")[2]);
-  const recipe = recipes[id];
-  console.log("recipes is: ", recipes);
-  let instructions = "";
-  if (recipe) {
-    instructions = recipe.instructions.split(".");
+  let recipe = recipes[id];
+  // if (search) {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API}/recipes/${recipe.id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+  //     )
+  //     .then(response => {
+  //       console.log("response33 here is: ", response);
+  //       setIndividualRecipe(response.data);
+  //       // reRender();
+  //     });
+  // }
+  console.log("individual is: ", individualRecipe);
+  if (individualRecipe) {
+    console.log("individualRecipe");
+    recipe = individualRecipe;
   }
+  // let instructions = "";
+  // if (recipe) {
+  //   instructions = recipe.instructions.split(".");
+  // }
   return (
     <div>
-      {recipe ? (
+      {/* {recipe ? (
         <div>
           <img src={recipe.image} height="225px" width="300px" class="recipeImage" />
 
@@ -40,7 +70,8 @@ const ViewRecipe = () => {
             return <p>{instruction.trim()}</p>;
           })}
         </div>
-      ) : null}
+      ) : null} */}
+      hello
     </div>
   );
 };

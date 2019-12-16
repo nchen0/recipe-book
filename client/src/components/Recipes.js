@@ -13,7 +13,6 @@ const Recipes = () => {
           `${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
         )
         .then(response => {
-          console.log("response is: ", response);
           setRecipes(response.data.recipes);
         });
     }
