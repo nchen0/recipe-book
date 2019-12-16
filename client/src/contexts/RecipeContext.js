@@ -5,9 +5,12 @@ export const RecipeContext = createContext();
 const RecipeContextProvider = props => {
   const [myRecipes, setMyRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [search, setSearch] = useState(false);
 
   return (
-    <RecipeContext.Provider value={{ recipes, setRecipes, myRecipes, setMyRecipes }}>
+    <RecipeContext.Provider
+      value={{ recipes, setRecipes, myRecipes, setMyRecipes, search, setSearch }}
+    >
       {props.children}
     </RecipeContext.Provider>
   );

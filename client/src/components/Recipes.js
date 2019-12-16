@@ -5,7 +5,7 @@ import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
 
 const Recipes = () => {
-  const { recipes, setRecipes } = useContext(RecipeContext);
+  const { recipes, setRecipes, search } = useContext(RecipeContext);
   useEffect(() => {
     if (!recipes.length) {
       axios
@@ -26,10 +26,6 @@ const Recipes = () => {
           <Link to={`/recipe/${i}`}>
             <Recipe recipe={recipe} />
           </Link>
-
-          // <Link to={`/recipe/${recipe.name}`}>
-          //   <Recipe recipe={recipe} />
-          // </Link>
         );
       })}
     </div>

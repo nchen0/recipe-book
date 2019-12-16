@@ -1,10 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginModal from "./forms/LoginModal";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { RecipeContext } from "../contexts/RecipeContext";
+import axios from "axios";
 
 const Navbar = () => {
   const { loginData, setLogin } = useContext(AuthContext);
+  const { recipes, setRecipes, setSearch } = useContext(RecipeContext);
+  const [query, setQuery] = useState("");
 
   const logout = () => {
     setLogin({ loggedIn: false });
@@ -16,6 +20,23 @@ const Navbar = () => {
       setLogin({ loggedIn: true });
     }
   }, []);
+
+  const inputQuery = e => {
+    setQuery(e.target.value);
+  };
+
+  const search = e => {
+    e.preventDefault();
+    setSearch(true);
+    axios
+      .get(
+        `${process.env.REACT_APP_API}/recipes/search?query=${query}&number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+      )
+      .then(response => {
+        console.log("response is: ", response);
+        setRecipes(response.data.results);
+      });
+  };
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -70,8 +91,9 @@ const Navbar = () => {
             type="search"
             placeholder="Search"
             aria-label="Search"
+            onChange={inputQuery}
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={search}>
             Search
           </button>
         </form>
