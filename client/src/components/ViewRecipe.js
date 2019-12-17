@@ -21,19 +21,8 @@ const ViewRecipe = () => {
       let recipeId = recipes[Number(window.location.pathname.split("/")[2])].id;
       axios.get(`${process.env.REACT_APP_API}/recipes/${recipeId}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`).then(response => {
         setIndividualRecipe(response.data);
-        console.log('individualRecipe: ', individualRecipe);
       })
     }
-    // } else if (search) {
-    //   axios
-    //     .get(
-    //       `${process.env.REACT_APP_API}/recipes/${recipe.id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
-    //     )
-    //     .then(response => {
-    //       console.log("response2 here is: ", response);
-    //       setIndividualRecipe(response.data);
-    //     });
-    // }
   }, []);
 
   let id = Number(window.location.pathname.split("/")[2]);
@@ -53,7 +42,6 @@ const ViewRecipe = () => {
       {recipe ? (
         <div>
           <img src={recipe.image} height="225px" width="300px" class="recipeImage" alt={recipe.name}/>
-
           <div>{recipe.title}</div>
           <h3>Ingredients</h3>
           {recipe.extendedIngredients.map(ingredient => {
