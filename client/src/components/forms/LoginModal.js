@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
+import { auth, provider } from "../OAuth/firebase";
 
 const LoginModal = () => {
   let closeModalButton = document.querySelector(".close");
@@ -17,6 +18,14 @@ const LoginModal = () => {
 
   const inputValue = e => {
     setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const googleLogin = e => {
+    e.preventDefault();
+    auth.signInWithPopup(provider).then(result => {
+      localStorage.setItem("username", result.user.email);
+      closeModalButton.click();
+    })
   };
 
   const submitAccount = () => {
@@ -91,7 +100,7 @@ const LoginModal = () => {
                   Create Account
                 </button>
                 <p class="registrationToggleText">Or sign up with</p>
-                <button class="googleButton">
+                <button class="googleButton" onClick={googleLogin}>
                   <img
                     src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
                     alt="googlebutton"
@@ -148,7 +157,7 @@ const LoginModal = () => {
                 </button>
                 <p class="loginToggleText">Or login with</p>
 
-                <button class="googleButton">
+                <button class="googleButton" onClick={googleLogin}>
                   <img
                     src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/8215f6659adc202403198fef903a447e/sign-in-with-google.svg"
                     alt="googlebutton"
