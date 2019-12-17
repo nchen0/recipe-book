@@ -3,6 +3,7 @@ import { RecipeContext } from "../contexts/RecipeContext";
 import axios from "axios";
 
 const ViewRecipe = () => {
+  let recipe;
   const { recipes, setRecipes, search } = useContext(RecipeContext);
   const [individualRecipe, setIndividualRecipe] = useState("");
   const [random, setRandom] = useState(Math.random());
@@ -19,6 +20,12 @@ const ViewRecipe = () => {
         .then(response => {
           setRecipes(response.data.recipes);
         });
+    } else if (search) {
+      let recipeId = recipes[Number(window.location.pathname.split("/")[2])].id;
+      axios.get(`${process.env.REACT_APP_API}/recipes/${recipeId}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`).then(response => {
+        setIndividualRecipe(response.data);
+        console.log('individualRecipe: ', individualRecipe);
+      })
     }
     // } else if (search) {
     //   axios
@@ -33,7 +40,7 @@ const ViewRecipe = () => {
   }, []);
 
   let id = Number(window.location.pathname.split("/")[2]);
-  let recipe = recipes[id];
+  recipe = recipes[id];
   // if (search) {
   //   axios
   //     .get(
@@ -46,17 +53,20 @@ const ViewRecipe = () => {
   //     });
   // }
   console.log("individual is: ", individualRecipe);
+  if (search) {
+    recipe = "";
+  }
   if (individualRecipe) {
     console.log("individualRecipe");
     recipe = individualRecipe;
   }
-  // let instructions = "";
-  // if (recipe) {
-  //   instructions = recipe.instructions.split(".");
-  // }
+  let instructions = "";
+  if (recipe) {
+    instructions = recipe.instructions.split(".");
+  }
   return (
     <div>
-      {/* {recipe ? (
+      {recipe ? (
         <div>
           <img src={recipe.image} height="225px" width="300px" class="recipeImage" />
 
@@ -70,7 +80,7 @@ const ViewRecipe = () => {
             return <p>{instruction.trim()}</p>;
           })}
         </div>
-      ) : null} */}
+      ) : null}
       hello
     </div>
   );
