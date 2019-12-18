@@ -5,7 +5,6 @@ const db = require("../data/dbConfig.js");
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  console.log("recipe");
   db("recipes")
     .then(recipes => {
       res.json(recipes);
@@ -16,7 +15,14 @@ router.get("/", (req, res) => {
 });
 
 router.post("/add", (req, res) => {
-  db("recipes");
+  db("recipes")
+    .insert(req.body)
+    .then(response => {
+      res.status(201).json(req.body);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

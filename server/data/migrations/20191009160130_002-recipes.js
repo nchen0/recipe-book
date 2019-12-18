@@ -8,8 +8,9 @@ exports.up = function(knex) {
     table.string("ingredients", 512).notNullable();
     table.string("directions", 512);
     table.string("tags", 128);
-    table.string("pictureURL", 128);
+    table.string("pictureURL", 512);
     table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.string("owner", 128).notNullable();
   });
 };
 
