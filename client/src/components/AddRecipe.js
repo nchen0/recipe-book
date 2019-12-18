@@ -1,12 +1,40 @@
 import React, { useState } from "react";
-import Uploader from "./Uploader";
 import { Link } from "react-router-dom";
+import ImageUploader from "react-images-upload";
+import firebase from "./OAuth/firebase";
+import axios from "axios";
 
 const AddRecipe = () => {
+  const ref = firebase.storage().ref();
   const [useLink, setLink] = useState(false);
+  const [imageUrl, setUrl] = useState("");
+  const [input, setInput] = useState({});
 
   const setUseLink = () => {
     setLink(true);
+  };
+
+  const inputValue = e => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const fileChangedHandler = e => {
+    const file = e[0];
+    const name = +new Date() + "-" + file.name;
+    const metadata = { contentType: file.type };
+
+    const task = ref.child(name).put(file, metadata);
+    task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => setUrl(url));
+  };
+
+  const saveRecipe = e => {
+    e.preventDefault();
+    const recipe = input;
+    recipe.pictureURL = imageUrl;
+    recipe.owner = localStorage.getItem("username");
+    axios.post(`${process.env.REACT_APP_DB}/recipes/add`, recipe).then(response => {
+      console.log("response: ", response);
+    });
   };
 
   return (
@@ -19,7 +47,13 @@ const AddRecipe = () => {
           </div>
         ) : (
           <div class="useImage">
-            <Uploader />
+            <ImageUploader
+              withIcon={true}
+              buttonText="Add a Photo"
+              onChange={fileChangedHandler}
+              imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
+              maxFileSize={5242880}
+            />
             <p>
               or use a{" "}
               <span onClick={setUseLink} class="useLink">
@@ -33,19 +67,32 @@ const AddRecipe = () => {
       <div class="words">
         <div class="addTitle">
           <p class="titleLabel label">Recipe Title</p>
-          <input class="titleInput" />
-        </div>
-        <div class="addDescription">
-          <p class="descriptionLabel label">Description</p>
-          <input class="descriptionInput" />
+          <input
+            class="titleInput"
+            type="text"
+            name="name"
+            placeholder="Add a title"
+            onChange={inputValue}
+          />
         </div>
         <div class="addIngredients">
           <p class="label">Ingredients</p>
-          <textarea class="ingredientsInput" placeholder="Put each ingredient on its own line." />
+          <textarea
+            class="ingredientsInput"
+            placeholder="Put each ingredient on its own line."
+            name="ingredients"
+            onChange={inputValue}
+            type="text"
+          />
         </div>
         <div class="addDirections">
           <p class="label">Directions</p>
-          <textarea class="directionsInput" placeholder="Put each step on its own line." />
+          <textarea
+            class="directionsInput"
+            placeholder="Put each step on its own line."
+            onChange={inputValue}
+            name="directions"
+          />
         </div>
 
         <div class="radios">
@@ -53,7 +100,9 @@ const AddRecipe = () => {
           <input type="radio" value="private" name="publicprivate" /> Public Recipe
         </div>
         <div class="buttons">
-          <button class="btn btn-success">Save</button>
+          <button class="btn btn-success" onClick={saveRecipe}>
+            Save
+          </button>
           <Link class="btn btn-secondary" to={"/"}>
             Cancel
           </Link>
