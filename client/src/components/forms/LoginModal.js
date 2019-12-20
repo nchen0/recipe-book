@@ -8,6 +8,7 @@ const LoginModal = () => {
   const { clickRegister, setClickRegister } = useContext(AuthContext);
   const { loginData, setLogin } = useContext(AuthContext);
   const [input, setInput] = useState({});
+
   const toggleRegister = () => {
     setClickRegister(true);
   };
@@ -25,7 +26,7 @@ const LoginModal = () => {
     auth.signInWithPopup(provider).then(result => {
       localStorage.setItem("username", result.user.email);
       closeModalButton.click();
-    })
+    });
   };
 
   const submitAccount = () => {

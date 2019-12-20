@@ -33,7 +33,6 @@ const Navbar = () => {
         `${process.env.REACT_APP_API}/recipes/search?query=${query}&number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
       )
       .then(response => {
-        console.log("response is: ", response);
         setRecipes(response.data.results);
       });
   };
@@ -62,11 +61,13 @@ const Navbar = () => {
               Home <span class="sr-only">(current)</span>
             </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to={"/my-recipes"}>
-              My Recipes
-            </Link>
-          </li>
+          {localStorage.getItem("username") ? (
+            <li class="nav-item">
+              <Link class="nav-link" to={"/my-recipes"}>
+                My Recipes
+              </Link>
+            </li>
+          ) : null}
           <li class="nav-item">
             {loginData.loggedIn ? (
               <Link class="nav-link" to={"#"} onClick={logout}>
