@@ -4,6 +4,7 @@ import { RecipeContext } from "../contexts/RecipeContext";
 const Recipe = ({ recipe }) => {
   const { search } = useContext(RecipeContext);
   const imageUrl = `https://spoonacular.com/recipeImages/${recipe.image}`;
+  console.log("recipe: ", recipe);
   return (
     <div className="card">
       {search ? (
@@ -11,13 +12,13 @@ const Recipe = ({ recipe }) => {
       ) : (
         <img
           src={recipe.image}
-          height="225px"
-          width="300px"
+          height="250px"
+          width="400px"
           class="recipeImage"
           alt="placeholder"
         />
       )}
-      <div>{recipe.title}</div>
+      <div class="card-title">{recipe.title}</div>
     </div>
   );
 };

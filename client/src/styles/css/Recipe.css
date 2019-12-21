@@ -4,14 +4,45 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  max-width: 1350px;
+  margin-top: 40px;
 }
 
 .card {
-  min-width: 500px;
+  min-width: 425px;
+  max-width: 425px;
   min-height: 400px;
   margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+.card .card-title {
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-decoration: none;
+  color: black;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.card .card-title:hover {
+  text-decoration: none;
 }
 
 .recipeImage {
   margin: 0 auto;
+}
+
+.card-link a:hover {
+  border-color: green;
 }

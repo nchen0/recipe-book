@@ -10,6 +10,7 @@ const ViewRecipe = () => {
 
   // Take care of refreshing the page.
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!recipes.length) {
       axios
         .get(
@@ -56,9 +57,11 @@ const ViewRecipe = () => {
           />
           <div class="recipe-text">
             <h1 class="recipe-title">{recipe.title}</h1>
-            <p>Serves: {recipe.servings}</p>
-            <p>Dish Type: {recipe.dishTypes[0]}</p>
-            <a href={recipe.sourceUrl}>Source</a>
+            <li>Serves: {recipe.servings}</li>
+            <li>Dish Type: {recipe.dishTypes[0]}</li>
+            <li>
+              <a href={recipe.sourceUrl}>Source</a>
+            </li>
             <hr />
             <h4 class="ingredients-title">Ingredients</h4>
             {recipe.extendedIngredients.map(ingredient => {
