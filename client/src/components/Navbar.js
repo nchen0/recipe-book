@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <Link class="navbar-brand" to={"/"}>
-        Recipe Book
+        <img src="../img/logo.png" height="75px" width="200px" />
       </Link>
       <button
         class="navbar-toggler"

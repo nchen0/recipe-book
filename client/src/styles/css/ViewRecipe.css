@@ -1,0 +1,17 @@
+.view-recipe {
+  max-width: 900px;
+  margin-top: 40px;
+}
+
+.view-recipe .recipe-text {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.view-recipe .directions-title {
+  margin-top: 35px;
+}
+
+.view-recipe .specific-instruction {
+  margin-bottom: 18px;
+}
