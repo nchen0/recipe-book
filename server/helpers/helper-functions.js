@@ -3,8 +3,6 @@ const Joi = require("@hapi/joi");
 require("dotenv").config();
 const secret = process.env.SECRET;
 
-console.log("secret: ", secret);
-
 function generateToken(user) {
   const payload = {
     username: user.username,

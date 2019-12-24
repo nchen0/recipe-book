@@ -19,14 +19,21 @@ const Recipes = () => {
   }, []);
 
   return (
-    <div className="cards container">
-      {recipes.map((recipe, i) => {
-        return (
-          <Link style={{ textDecoration: "none" }} to={`/recipe/${i}`}>
-            <Recipe recipe={recipe} />
-          </Link>
-        );
-      })}
+    <div class="my-container">
+      <img class="landingpage-pic" src="../img/main-image.jpeg" />
+      <div class="centered">
+        <p>Need a Recipe?</p>
+        <input></input>
+      </div>
+      <div className="cards container">
+        {recipes.map((recipe, i) => {
+          return (
+            <Link style={{ textDecoration: "none" }} to={`/recipe/${i}`}>
+              <Recipe recipe={recipe} />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
