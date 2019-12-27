@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { auth, provider } from "../OAuth/firebase";
 
 const LoginModal = () => {
+  let DB = process.env.REACT_APP_DB || "http://localhost:8000";
   let closeModalButton = document.querySelector(".close");
   const { clickRegister, setClickRegister } = useContext(AuthContext);
   const { loginData, setLogin } = useContext(AuthContext);
@@ -34,14 +35,14 @@ const LoginModal = () => {
     delete user.verifyPassword;
     if (clickRegister) {
       // Creating new account, so will hit the register api:
-      axios.post(`${process.env.REACT_APP_DB}/auth/register`, user).then(() => {
+      axios.post(`${DB}/auth/register`, user).then(() => {
         setLogin({ ...loginData, loggedIn: true });
         closeModalButton.click();
         localStorage.setItem("username", user.username);
       });
     } else {
       axios
-        .post(`${process.env.REACT_APP_DB}/auth/login`, user)
+        .post(`${DB}/auth/login`, user)
         .then(response => {
           setLogin({ ...loginData, loggedIn: true });
           closeModalButton.click();

@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import MyRecipe from "./MyRecipe";
 
 const MyRecipes = props => {
+  let DB = process.env.REACT_APP_DB || "http://localhost:8000";
   const { myRecipes, setMyRecipes } = useContext(RecipeContext);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_DB}/recipes`).then(result => {
+    axios.get(`${DB}/recipes`).then(result => {
       setMyRecipes(result.data);
     });
   }, []);

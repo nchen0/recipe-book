@@ -5,6 +5,7 @@ import firebase from "./OAuth/firebase";
 import axios from "axios";
 
 const AddRecipe = () => {
+  let DB = process.env.REACT_APP_DB || "http://localhost:8000";
   const ref = firebase.storage().ref();
   const [useLink, setLink] = useState(false);
   const [imageUrl, setUrl] = useState("");
@@ -32,7 +33,7 @@ const AddRecipe = () => {
     const recipe = input;
     recipe.pictureURL = imageUrl;
     recipe.owner = localStorage.getItem("username");
-    axios.post(`${process.env.REACT_APP_DB}/recipes/add`, recipe).then(response => {
+    axios.post(`${DB}/recipes/add`, recipe).then(response => {
       console.log("response: ", response);
     });
   };

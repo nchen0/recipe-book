@@ -2,6 +2,17 @@ import React, { useContext } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 
 const Recipe = ({ recipe }) => {
+  const getRandomColor = () => {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+  const spanStyle = {
+    backgroundColor: getRandomColor()
+  };
   const { search } = useContext(RecipeContext);
   const imageUrl = `https://spoonacular.com/recipeImages/${recipe.image}`;
   console.log("recipe: ", recipe);
@@ -19,6 +30,7 @@ const Recipe = ({ recipe }) => {
         />
       )}
       <div class="card-title">{recipe.title}</div>
+      <span style={spanStyle}>{recipe.vegetarian ? "Vegetarian" : null}</span>
     </div>
   );
 };

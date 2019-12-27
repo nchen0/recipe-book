@@ -43,6 +43,10 @@ const ViewRecipe = () => {
   if (recipe) {
     instructions = recipe.instructions.split(".");
   }
+
+  const saveRecipe = e => {
+    e.preventDefault();
+  };
   console.log("recipe: ", recipe);
   return (
     <div class="container view-recipe">
@@ -76,9 +80,7 @@ const ViewRecipe = () => {
                 </div>
               );
             })}
-            {/* {instructions.map(instruction => {
-              return <p>{instruction.trim()}</p>;
-            })} */}
+            <button class="btn btn-success">Save Recipe</button>
           </div>
         </div>
       ) : null}
