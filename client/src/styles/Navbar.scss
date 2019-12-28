@@ -2,6 +2,16 @@
   width: 85px;
 }
 
+.navbar-brand {
+}
+.center-logo {
+  margin: 0 auto;
+}
+
+.center-logo img {
+  width: 250px;
+}
+
 .navbar-nav {
   font-size: 23px;
   margin-top: 25px;
@@ -10,11 +20,25 @@
 .login-logo img {
   height: 55px;
   width: 55px;
-  margin-left: 150px;
+  margin-left: 300px;
 }
 
 .navbar {
   max-height: 85px;
   padding-bottom: 10px;
   padding-top: 10px;
+}
+
+.dropdown-toggle {
+  width: 55px;
+  height: 55px;
+}
+
+.dropdown-menu {
+  left: -89px;
+}
+
+.mr-auto,
+.mx-auto {
+  margin-right: 0 !important;
 }
