@@ -15,7 +15,7 @@ const ViewRecipe = () => {
     if (!recipes.length) {
       axios
         .get(
-          `${process.env.REACT_APP_API}/recipes/random?number=10&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
+          `${process.env.REACT_APP_API}/recipes/random?number=12&apiKey=${process.env.REACT_APP_RECIPESDB_APPKEY}`
         )
         .then(response => {
           setRecipes(response.data.recipes);

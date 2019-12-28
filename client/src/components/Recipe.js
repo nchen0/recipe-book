@@ -30,7 +30,16 @@ const Recipe = ({ recipe }) => {
         />
       )}
       <div class="card-title">{recipe.title}</div>
-      <span style={spanStyle}>{recipe.vegetarian ? "Vegetarian" : null}</span>
+      <div class="tags">
+        {recipe.vegetarian ? <span class="tag">Vegetarian</span> : null}
+        {recipe.glutenFree ? <span class="tag">Gluten Free</span> : null}
+        {recipe.cuisines.map(cuisine => {
+          return <span class="tag">{cuisine}</span>;
+        })}
+        {recipe.dishTypes.map(dish => {
+          return <span class="tag">{dish}</span>;
+        })}
+      </div>
     </div>
   );
 };

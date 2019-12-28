@@ -33,12 +33,12 @@ router.post("/register", (req, res) => {
       res.status(201).json(user);
     })
     .catch(err => {
+      console.log("err is: ", err);
       res.status(500).json(err);
     });
 });
 
 router.post("/login", (req, res) => {
-  console.log("req is: ", req);
   const validatedUser = validateUser(req);
   if (validatedUser.error) {
     return res.status(400).send(validatedUser.error.details[0].message);
@@ -51,11 +51,12 @@ router.post("/login", (req, res) => {
     .then(user => {
       if (user && bcrypt.compareSync(credentials.password, user.password)) {
         const token = generateToken(user);
-        res.status(200).json(token);
+        return res.status(200).json(token);
       }
       res.status(400).send("Invalid Login Credentials");
     })
     .catch(error => {
+      console.log("error is: ", error);
       res.status(500).json(error);
     });
 });

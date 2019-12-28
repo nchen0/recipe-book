@@ -6,11 +6,13 @@ import { RecipeContext } from "../contexts/RecipeContext";
 import axios from "axios";
 
 const Navbar = () => {
+  let loggedIn = localStorage.getItem("username");
   const { loginData, setLogin } = useContext(AuthContext);
   const { recipes, setRecipes, setSearch } = useContext(RecipeContext);
   const [query, setQuery] = useState("");
 
   const logout = () => {
+    console.log("logged out");
     setLogin({ loggedIn: false });
     localStorage.removeItem("username");
   };
@@ -39,9 +41,6 @@ const Navbar = () => {
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <Link class="navbar-brand" to={"/"}>
-        <img src="../img/logo.png" height="75px" width="200px" />
-      </Link>
       <button
         class="navbar-toggler"
         type="button"
@@ -53,7 +52,9 @@ const Navbar = () => {
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <Link class="navbar-brand" to={"/"}>
+        <img src="../img/logo2.png" height="75px" width="200px" />
+      </Link>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -61,14 +62,14 @@ const Navbar = () => {
               Home <span class="sr-only">(current)</span>
             </Link>
           </li>
-          {localStorage.getItem("username") ? (
-            <li class="nav-item">
-              <Link class="nav-link" to={"/my-recipes"}>
-                My Recipes
-              </Link>
-            </li>
-          ) : null}
+          {/* {localStorage.getItem("username") ? ( */}
           <li class="nav-item">
+            <Link class="nav-link" to={"/my-recipes"}>
+              My Recipes
+            </Link>
+          </li>
+          {/* ) : null} */}
+          {/* <li class="nav-item">
             {loginData.loggedIn ? (
               <Link class="nav-link" to={"#"} onClick={logout}>
                 Logout
@@ -78,25 +79,45 @@ const Navbar = () => {
                 Login/Register
               </Link>
             )}
-          </li>
+          </li> */}
           <li class="nav-item">
             <Link class="nav-link" to={"/add"}>
               Add
             </Link>
           </li>
+          <li class="nav-item">
+            <Link class="nav-link" to={"/about"}>
+              About
+            </Link>
+          </li>
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
-          <input
+          {/* <input
             class="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
             onChange={inputQuery}
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={search}>
+          /> */}
+
+          {/* <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={search}>
             Search
-          </button>
+          </button> */}
+          {!loggedIn ? (
+            <Link
+              class="navbar-brand login-logo"
+              to={"/"}
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <img src="../img/login.png" height="75px" width="200px" />
+            </Link>
+          ) : (
+            <Link class="nav-link login-logo" to={"#"} onClick={logout}>
+              <img src="../img/logout.png" height="75px" width="200px" />
+            </Link>
+          )}
         </form>
         <LoginModal />
       </div>

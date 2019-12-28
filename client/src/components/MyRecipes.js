@@ -10,7 +10,9 @@ const MyRecipes = props => {
 
   useEffect(() => {
     axios.get(`${DB}/recipes`).then(result => {
-      setMyRecipes(result.data);
+      let user = localStorage.getItem("username");
+      let recipes = result.data.filter(recipe => recipe.owner === user);
+      setMyRecipes(recipes);
     });
   }, []);
   return (
