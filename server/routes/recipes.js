@@ -18,9 +18,11 @@ router.post("/add", (req, res) => {
   db("recipes")
     .insert(req.body)
     .then(response => {
+      console.log("response: ", response);
       res.status(201).json(req.body);
     })
     .catch(err => {
+      console.log("err: ", err);
       res.status(500).json(err);
     });
 });

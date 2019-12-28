@@ -7,6 +7,7 @@ const ViewRecipe = () => {
   let recipe;
   const { recipes, setRecipes, search } = useContext(RecipeContext);
   const [individualRecipe, setIndividualRecipe] = useState("");
+  let loggedIn = localStorage.getItem("username");
 
   // Take care of refreshing the page.
   useEffect(() => {
@@ -46,6 +47,27 @@ const ViewRecipe = () => {
 
   const saveRecipe = e => {
     e.preventDefault();
+    let DB = process.env.REACT_APP_DB || "http://localhost:8000";
+    let ingredients = "";
+    recipe.extendedIngredients.forEach(ingredient => {
+      ingredients += `${ingredient.name}.`;
+    });
+    let directions = "";
+    recipe.analyzedInstructions[0].steps.forEach(direction => {
+      directions += `${direction.step}.`;
+    });
+    let newRecipe = {
+      name: recipe.title,
+      sourceURL: recipe.sourceUrl,
+      ingredients,
+      pictureURL: recipe.image,
+      directions,
+      owner: localStorage.getItem("username")
+    };
+
+    axios.post(`${DB}/recipes/add`, newRecipe).then(response => {
+      console.log("response: ", response);
+    });
   };
   console.log("recipe: ", recipe);
   return (
@@ -80,7 +102,11 @@ const ViewRecipe = () => {
                 </div>
               );
             })}
-            <button class="btn btn-success">Save Recipe</button>
+            {loggedIn ? (
+              <button class="btn btn-success" onClick={saveRecipe}>
+                Save Recipe
+              </button>
+            ) : null}
           </div>
         </div>
       ) : null}
