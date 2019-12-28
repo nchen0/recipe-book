@@ -18,7 +18,6 @@
 .login-logo img {
   height: 55px;
   width: 55px;
-  margin-left: 300px;
 }
 
 .navbar {
@@ -34,9 +33,4 @@
 
 .dropdown-menu {
   left: -89px;
-}
-
-.mr-auto,
-.mx-auto {
-  margin-right: 0 !important;
 }

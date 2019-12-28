@@ -13,13 +13,24 @@ const Recipe = ({ recipe }) => {
   const spanStyle = {
     backgroundColor: getRandomColor()
   };
+  const colorObj = {
+    "side dish": "red",
+    Mexican: "blue",
+    vegetarian: "green"
+  };
   const { search } = useContext(RecipeContext);
   const imageUrl = `https://spoonacular.com/recipeImages/${recipe.image}`;
   console.log("recipe: ", recipe);
   return (
     <div className="card">
       {search ? (
-        <img src={imageUrl} height="225px" width="300px" class="recipeImage" alt="placeholder" />
+        <img
+          src={recipe.image}
+          height="225px"
+          width="300px"
+          class="recipeImage"
+          alt="placeholder"
+        />
       ) : (
         <img
           src={recipe.image}
@@ -34,10 +45,18 @@ const Recipe = ({ recipe }) => {
         {recipe.vegetarian ? <span class="tag">Vegetarian</span> : null}
         {recipe.glutenFree ? <span class="tag">Gluten Free</span> : null}
         {recipe.cuisines.map(cuisine => {
-          return <span class="tag">{cuisine}</span>;
+          return (
+            <span class="tag" style={{ backgroundColor: colorObj[cuisine] }}>
+              {cuisine}
+            </span>
+          );
         })}
         {recipe.dishTypes.map(dish => {
-          return <span class="tag">{dish}</span>;
+          return (
+            <span class="tag" style={{ backgroundColor: colorObj[dish] }}>
+              {dish}
+            </span>
+          );
         })}
       </div>
     </div>

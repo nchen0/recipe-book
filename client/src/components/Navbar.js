@@ -7,12 +7,15 @@ import axios from "axios";
 
 const Navbar = () => {
   let loggedIn = localStorage.getItem("username");
-  const { loginData, setLogin } = useContext(AuthContext);
+  const { loginData, setLogin, clickRegister, setClickRegister } = useContext(AuthContext);
   const { recipes, setRecipes, setSearch } = useContext(RecipeContext);
   const [query, setQuery] = useState("");
 
+  const toggleLogin = () => {
+    setClickRegister(false);
+  };
+
   const logout = () => {
-    console.log("logged out");
     setLogin({ loggedIn: false });
     localStorage.removeItem("username");
   };
@@ -55,6 +58,9 @@ const Navbar = () => {
       <Link class="navbar-brand" to={"/"}>
         <img src="../img/logo2.png" height="75px" width="200px" />
       </Link>
+      <Link class="navbar-brand center-logo" to={"/"}>
+        <img src="../img/center-logo.png" />
+      </Link>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           {/* <li class="nav-item active">
@@ -91,9 +97,9 @@ const Navbar = () => {
             </Link>
           </li> */}
         </ul>
-        <Link class="navbar-brand center-logo" to={"/"}>
+        {/* <Link class="navbar-brand center-logo" to={"/"}>
           <img src="../img/center-logo.png" />
-        </Link>
+        </Link> */}
         <form class="form-inline my-2 my-lg-0">
           {/* <input
             class="form-control mr-sm-2"
@@ -125,18 +131,18 @@ const Navbar = () => {
                 src="../img/login.png"
               ></img>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
                   Login
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
                   Register
                 </a>
-                <a class="dropdown-item" href="#">
+                <Link class="dropdown-item" to={"/my-recipes"}>
                   My Recipes
-                </a>
-                <a class="dropdown-item" href="#">
+                </Link>
+                <Link class="dropdown-item" to={"/add"}>
                   Add
-                </a>
+                </Link>
               </div>
             </div>
           ) : (
