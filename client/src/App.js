@@ -4,6 +4,7 @@ import "./styles/css/Recipe.css";
 import "./styles/css/AddRecipe.css";
 import "./styles/css/LoginModal.css";
 import "./styles/css/Navbar.css";
+import "./styles/css/EditRecipe.css";
 import Navbar from "./components/Navbar";
 import RecipeContextProvider from "./contexts/RecipeContext";
 import Recipes from "./components/Recipes";

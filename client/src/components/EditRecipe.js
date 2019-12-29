@@ -36,11 +36,6 @@ const EditRecipe = () => {
           name="directions"
         />
       </div>
-
-      <div class="radios">
-        <input type="radio" value="public" name="publicprivate" /> Private Recipe
-        <input type="radio" value="private" name="publicprivate" /> Public Recipe
-      </div>
       <div class="buttons">
         <button class="btn btn-success" onClick={saveRecipe}>
           Save

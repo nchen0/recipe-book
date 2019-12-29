@@ -27,7 +27,24 @@ function validateUser(req) {
   return schema.validate(newUser);
 }
 
+function validateRecipe(req) {
+  const newRecipe = req.body;
+  const schema = Joi.object({
+    title: Joi.string()
+      .min(3)
+      .required(),
+    ingredients: Joi.string()
+      .min(5)
+      .required(),
+    directions: Joi.string()
+      .min(5)
+      .required()
+  });
+  return schema.validate(newRecipe);
+}
+
 module.exports = {
   generateToken,
-  validateUser
+  validateUser,
+  validateRecipe
 };
