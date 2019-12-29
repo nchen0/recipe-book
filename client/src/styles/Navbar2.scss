@@ -10,3 +10,17 @@
     display: none;
   }
 }
+
+.navbar-toggler {
+  @media screen and (max-width: 470px) {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+}
+
+.center-logo {
+  @media screen and (max-width: 470px) {
+    display: none;
+  }
+}
