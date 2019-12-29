@@ -20,10 +20,12 @@
   width: 55px;
 }
 
-.navbar {
-  max-height: 85px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+@media screen and (min-width: 1000px) {
+  .navbar {
+    max-height: 85px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
 }
 
 .dropdown-toggle {

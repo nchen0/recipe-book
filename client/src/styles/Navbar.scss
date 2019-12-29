@@ -23,9 +23,11 @@
 }
 
 .navbar {
-  max-height: 85px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  @media screen and (min-width: 1000px) {
+    max-height: 85px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
 }
 
 .dropdown-toggle {
@@ -36,3 +38,5 @@
 .dropdown-menu {
   left: -89px;
 }
+
+// Navbar 2

@@ -1,0 +1,12 @@
+.navbar2 {
+  @media screen and (min-width: 991px) {
+    display: none;
+  }
+}
+
+.dropdown,
+.logout-logo {
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+}
