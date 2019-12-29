@@ -3,7 +3,7 @@ import axios from "axios";
 import { RecipeContext } from "../contexts/RecipeContext";
 import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
-import { LoadingOverlay, Loader } from "react-overlay-loader";
+import { Loader } from "react-overlay-loader";
 
 const Recipes = () => {
   const { recipes, setRecipes, setSearch } = useContext(RecipeContext);
@@ -36,6 +36,9 @@ const Recipes = () => {
       )
       .then(response => {
         setRecipes(response.data.recipes);
+        setLoading(false);
+      })
+      .catch(err => {
         setLoading(false);
       });
   };

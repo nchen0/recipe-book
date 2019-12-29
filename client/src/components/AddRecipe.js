@@ -95,17 +95,13 @@ const AddRecipe = () => {
             name="directions"
           />
         </div>
-
-        <div class="radios">
-          <input type="radio" value="public" name="publicprivate" /> Private Recipe
-          <input type="radio" value="private" name="publicprivate" /> Public Recipe
-        </div>
         <div class="buttons">
           <button class="btn btn-success" onClick={saveRecipe}>
             Save
           </button>
-          <Link class="btn btn-secondary" to={"/"}>
-            Cancel
+
+          <Link class="cancel-button" to={"/"}>
+            <button class="btn btn-secondary">Cancel</button>
           </Link>
         </div>
       </div>

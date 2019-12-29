@@ -5,6 +5,18 @@
   margin-top: 35px;
 }
 
+@media screen and (max-width: 1200px) {
+  .add {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 .add .picture {
   width: 30%;
 }
@@ -35,8 +47,23 @@
   padding-left: 20%;
 }
 
+@media screen and (max-width: 1200px) {
+  .add .words {
+    padding-left: 0;
+  }
+}
+
 .add .words input {
   width: 600px;
+  border-radius: 3px;
+  border: 1px solid black;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .add .words input {
+    width: 80%;
+  }
 }
 
 .add .words .label {
@@ -62,6 +89,15 @@
 .add .words .addIngredients .ingredientsInput {
   width: 600px;
   height: 100px;
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .add .words .addIngredients .ingredientsInput {
+    width: 80%;
+  }
 }
 
 .add .words .addDirections {
@@ -70,18 +106,17 @@
 
 .add .words .addDirections .directionsInput {
   width: 600px;
-  height: 100px;
+  height: 140px;
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin-bottom: 20px;
 }
 
-.add .words .radios {
-  margin-top: 16px;
-  margin-bottom: 30px;
-  margin-left: -13px;
-}
-
-.add .words .radios input {
-  width: 50px;
-  height: 15px;
+@media screen and (max-width: 1200px) {
+  .add .words .addDirections .directionsInput {
+    width: 100%;
+  }
 }
 
 .add .words .buttons .btn-success {
@@ -91,4 +126,12 @@
 .add .words .buttons .btn {
   width: 200px;
   height: 45px;
+}
+
+.add .words .cancel-button {
+  color: white;
+}
+
+.add .words .cancel-button:hover {
+  text-decoration: none;
 }

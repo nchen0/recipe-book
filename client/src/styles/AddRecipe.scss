@@ -1,6 +1,10 @@
 .add {
   display: flex;
   margin-top: 35px;
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
   .picture {
     width: 30%;
@@ -28,8 +32,18 @@
     width: 70%;
     text-align: left;
     padding-left: 20%;
+
+    @media screen and (max-width: 1200px) {
+      padding-left: 0;
+    }
     input {
       width: 600px;
+      border-radius: 3px;
+      border: 1px solid black;
+      padding-left: 5px;
+      @media screen and (max-width: 1200px) {
+        width: 80%;
+      }
     }
     .label {
       margin-bottom: 0;
@@ -54,6 +68,12 @@
       .ingredientsInput {
         width: 600px;
         height: 100px;
+        border-radius: 3px;
+        padding-left: 5px;
+        padding-top: 5px;
+        @media screen and (max-width: 1200px) {
+          width: 80%;
+        }
       }
     }
 
@@ -61,20 +81,16 @@
       margin-top: 16px;
       .directionsInput {
         width: 600px;
-        height: 100px;
+        height: 140px;
+        border-radius: 3px;
+        padding-left: 5px;
+        padding-top: 5px;
+        margin-bottom: 20px;
+        @media screen and (max-width: 1200px) {
+          width: 100%;
+        }
       }
     }
-
-    .radios {
-      margin-top: 16px;
-      margin-bottom: 30px;
-      margin-left: -13px;
-      input {
-        width: 50px;
-        height: 15px;
-      }
-    }
-
     .buttons {
       .btn-success {
         margin-right: 20px;
@@ -83,6 +99,13 @@
         width: 200px;
         height: 45px;
       }
+    }
+
+    .cancel-button {
+      color: white;
+    }
+    .cancel-button:hover {
+      text-decoration: none;
     }
   }
 }

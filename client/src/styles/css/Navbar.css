@@ -36,3 +36,11 @@
 .dropdown-menu {
   left: -89px;
 }
+
+@media screen and (max-width: 600px) {
+  .modal-dialog,
+  .modal-content {
+    margin: 0;
+    width: 100%;
+  }
+}

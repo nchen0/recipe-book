@@ -64,24 +64,24 @@ const Navbar = () => {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav navbar2">
           <li class="nav-item active">
-            <a class="nav-link " href="#">
+            <Link class="nav-link " to={"/"}>
               Home <span class="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
               Login/Register
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <Link class="nav-link" to={"/my-recipes"}>
               My Recipes
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <Link class="nav-link" to={"/add"}>
               Add
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
