@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
+import DeleteModal from "./forms/DeleteModal";
 
 const ViewMyRecipes = () => {
   const { myRecipes } = useContext(RecipeContext);
@@ -25,6 +26,10 @@ const ViewMyRecipes = () => {
         <li>
           <a href={myRecipe.sourceUrl}>Source</a>
         </li>
+        <button class="btn btn-secondary">Edit</button>
+        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+          Delete
+        </button>
         <hr />
         <h4 class="ingredients-title">Ingredients</h4>
       </div>
@@ -43,6 +48,8 @@ const ViewMyRecipes = () => {
         );
       })}
       {/* <div>{myRecipe.directions}</div> */}
+      {/* Delete Modal goes below */}
+      <DeleteModal myRecipe={myRecipe} />
     </div>
   );
 };

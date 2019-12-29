@@ -27,4 +27,18 @@ router.post("/add", (req, res) => {
     });
 });
 
+router.delete("/delete/:id", (req, res) => {
+  console.log("req.body is: ", req.body);
+  db("recipes")
+    .where({ id: req.params.id })
+    .del()
+    .then(response => {
+      console.log("responsedelete is: ", response);
+    })
+    .catch(err => {
+      console.log("err is: ", err);
+      res.status(400).json(err);
+    });
+});
+
 module.exports = router;
