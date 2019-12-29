@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 import axios from "axios";
 import "../styles/css/ViewRecipe.css";
+import { LoadingOverlay, Loader } from "react-overlay-loader";
 
 const ViewRecipe = () => {
   let recipe;
   const { recipes, setRecipes, search } = useContext(RecipeContext);
   const [individualRecipe, setIndividualRecipe] = useState("");
   let loggedIn = localStorage.getItem("username");
+  const [loading, setLoading] = useState(false);
 
   // Take care of refreshing the page.
   useEffect(() => {
@@ -47,6 +49,7 @@ const ViewRecipe = () => {
 
   const saveRecipe = e => {
     e.preventDefault();
+    setLoading(true);
     let DB = process.env.REACT_APP_DB || "http://localhost:8000";
     let ingredients = "";
     recipe.extendedIngredients.forEach(ingredient => {
@@ -65,9 +68,15 @@ const ViewRecipe = () => {
       owner: localStorage.getItem("username")
     };
 
-    axios.post(`${DB}/recipes/add`, newRecipe).then(response => {
-      console.log("response: ", response);
-    });
+    axios
+      .post(`${DB}/recipes/add`, newRecipe)
+      .then(response => {
+        console.log("response: ", response);
+        setLoading(false);
+      })
+      .catch(err => {
+        setLoading(false);
+      });
   };
   console.log("recipe: ", recipe);
   return (
@@ -110,6 +119,8 @@ const ViewRecipe = () => {
           </div>
         </div>
       ) : null}
+
+      <Loader loading={loading} fullPage={true} />
     </div>
   );
 };

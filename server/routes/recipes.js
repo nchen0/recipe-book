@@ -62,8 +62,8 @@ router.put("/edit/:id", (req, res) => {
     .where({ id: req.params.id })
     .update(req.body)
     .then(response => {
-      return res.status(200).json(response);
       console.log("edited");
+      return res.status(200).json(response);
     })
     .catch(err => {
       console.log("err is: ", err);

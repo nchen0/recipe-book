@@ -3,10 +3,12 @@ import axios from "axios";
 import { RecipeContext } from "../contexts/RecipeContext";
 import Recipe from "./Recipe";
 import { Link } from "react-router-dom";
+import { LoadingOverlay, Loader } from "react-overlay-loader";
 
 const Recipes = () => {
   const { recipes, setRecipes, setSearch } = useContext(RecipeContext);
   const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!recipes.length) {
@@ -26,6 +28,7 @@ const Recipes = () => {
 
   const search = e => {
     e.preventDefault();
+    setLoading(true);
     setSearch(true);
     axios
       .get(
@@ -33,6 +36,7 @@ const Recipes = () => {
       )
       .then(response => {
         setRecipes(response.data.recipes);
+        setLoading(false);
       });
   };
 
@@ -45,6 +49,7 @@ const Recipes = () => {
           <input onChange={inputQuery}></input>
         </form>
       </div>
+
       <div className="cards container">
         {recipes.map((recipe, i) => {
           return (
@@ -54,6 +59,8 @@ const Recipes = () => {
           );
         })}
       </div>
+
+      <Loader loading={loading} />
     </div>
   );
 };

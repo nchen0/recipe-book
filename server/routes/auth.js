@@ -7,7 +7,6 @@ const { generateToken, validateUser } = require("../helpers/helper-functions");
 router.use(express.json());
 
 router.get("/users", (req, res) => {
-  console.log("hello");
   db("users")
     .then(users => {
       res.json(users);
@@ -56,7 +55,6 @@ router.post("/login", (req, res) => {
       res.status(400).send("Invalid Login Credentials");
     })
     .catch(error => {
-      console.log("error is: ", error);
       res.status(500).json(error);
     });
 });

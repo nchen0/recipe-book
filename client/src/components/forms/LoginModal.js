@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 import { auth, provider } from "../OAuth/firebase";
+import { LoadingOverlay, Loader } from "react-overlay-loader";
 
 const LoginModal = () => {
   let DB = process.env.REACT_APP_DB || "http://localhost:8000";
@@ -9,6 +10,7 @@ const LoginModal = () => {
   const { clickRegister, setClickRegister } = useContext(AuthContext);
   const { loginData, setLogin } = useContext(AuthContext);
   const [input, setInput] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const toggleRegister = () => {
     setClickRegister(true);
@@ -31,6 +33,7 @@ const LoginModal = () => {
   };
 
   const submitAccount = () => {
+    setLoading(true);
     const user = input;
     delete user.verifyPassword;
     if (clickRegister) {
@@ -47,9 +50,11 @@ const LoginModal = () => {
           setLogin({ ...loginData, loggedIn: true });
           closeModalButton.click();
           localStorage.setItem("username", user.username);
+          setLoading(false);
         })
         .catch(err => {
           console.log("error is: ", err);
+          setLoading(false);
         });
     }
   };
@@ -173,6 +178,7 @@ const LoginModal = () => {
                     Sign up Now
                   </span>
                 </p>
+                <Loader loading={loading} />
               </div>
             </div>
           </div>
