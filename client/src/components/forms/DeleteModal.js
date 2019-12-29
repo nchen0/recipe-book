@@ -4,13 +4,13 @@ import axios from "axios";
 const DeleteModal = ({ myRecipe }) => {
   let DB = process.env.REACT_APP_DB || "http://localhost:8000";
   let id = Number(window.location.pathname.split("/")[2]);
+  const closeButton = document.querySelector(".closeDelete");
 
   const deleteRecipe = e => {
     e.preventDefault();
     console.log("id is: ", id);
-    axios.delete(`${DB}/recipes/delete/${myRecipe.id}`).then(response => {
-      console.log("deleted");
-    });
+    axios.delete(`${DB}/recipes/delete/${myRecipe.id}`).then(response => {});
+    window.location.href = "/my-recipes";
   };
 
   return (
@@ -34,7 +34,7 @@ const DeleteModal = ({ myRecipe }) => {
           </div>
           <div class="modal-body">Are you sure you want to delete the recipe?</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button type="button" class="btn btn-secondary closeDelete" data-dismiss="modal">
               Close
             </button>
             <button type="button" class="btn btn-danger" onClick={deleteRecipe}>

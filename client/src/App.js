@@ -13,6 +13,7 @@ import AddRecipe from "./components/AddRecipe";
 import AuthContextProvider from "./contexts/AuthContext";
 import ViewMyRecipes from "./components/ViewMyRecipes";
 import ViewRecipe from "./components/ViewRecipe";
+import EditRecipe from "./components/EditRecipe";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/recipe/:id" component={ViewRecipe} />
           <Route exact path="/my-recipes" component={MyRecipes} />
           <Route exact path="/my-recipe/:id" component={ViewMyRecipes} />
+          <Route exact path="/edit" component={EditRecipe} />
         </RecipeContextProvider>
       </AuthContextProvider>
       <Route exact path="/add" component={AddRecipe} />

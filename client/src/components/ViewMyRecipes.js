@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 import DeleteModal from "./forms/DeleteModal";
+import { Link } from "react-router-dom";
 
 const ViewMyRecipes = () => {
   const { myRecipes } = useContext(RecipeContext);
@@ -26,7 +27,11 @@ const ViewMyRecipes = () => {
         <li>
           <a href={myRecipe.sourceUrl}>Source</a>
         </li>
-        <button class="btn btn-secondary">Edit</button>
+        <button class="btn btn-secondary">
+          <Link class="btn btn-secondary" to={"/edit"}>
+            Edit
+          </Link>
+        </button>
         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
           Delete
         </button>
