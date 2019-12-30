@@ -16,7 +16,27 @@ const Recipe = ({ recipe }) => {
   const colorObj = {
     "side dish": "red",
     Mexican: "blue",
-    vegetarian: "green"
+    vegetarian: "green",
+    brunch: "rgb(240, 81, 55)",
+    "gluten free": "rgb(183, 149, 158)",
+    "main course": "rgb(96, 162, 196)",
+    European: "rgb(80, 109, 213)",
+    Greek: "rgb(240, 81, 55)",
+    salad: "light-green",
+    "Eastern European": "rgb(75, 96, 107)",
+    lunch: "orange",
+    Irish: "dark red",
+    antipasti: "teal",
+    starter: "rgb(214, 167, 145)",
+    snack: "rgb(158, 92, 62)",
+    appetizer: "rgb(62, 88, 158)",
+    antipasto: "rgb(156, 158, 62)",
+    "hor d'oeuvre": "rgb(77, 29, 51)",
+    dinner: "rgb(143, 31, 83)",
+    "main dish": "rgb(132, 37, 161)",
+    Chinese: "rgb(175, 132, 67)",
+    Asian: "rgb(47, 87, 43)",
+    Indian: "rgb(124, 38, 38)"
   };
   const { search } = useContext(RecipeContext);
   const imageUrl = `https://spoonacular.com/recipeImages/${recipe.image}`;

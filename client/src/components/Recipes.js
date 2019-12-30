@@ -37,6 +37,7 @@ const Recipes = () => {
       .then(response => {
         setRecipes(response.data.recipes);
         setLoading(false);
+        setQuery("");
       })
       .catch(err => {
         setLoading(false);
@@ -49,7 +50,7 @@ const Recipes = () => {
       <div class="centered">
         <p>Need a Recipe?</p>
         <form onSubmit={search}>
-          <input onChange={inputQuery}></input>
+          <input onChange={inputQuery} value={query}></input>
         </form>
       </div>
 
