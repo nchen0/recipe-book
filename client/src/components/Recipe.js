@@ -20,7 +20,6 @@ const Recipe = ({ recipe }) => {
   };
   const { search } = useContext(RecipeContext);
   const imageUrl = `https://spoonacular.com/recipeImages/${recipe.image}`;
-  console.log("recipe: ", recipe);
   return (
     <div className="card">
       {search ? (

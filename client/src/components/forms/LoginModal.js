@@ -27,6 +27,8 @@ const LoginModal = () => {
   const googleLogin = e => {
     e.preventDefault();
     auth.signInWithPopup(provider).then(result => {
+      console.log("came in here");
+      setLogin({ loggedIn: true });
       localStorage.setItem("username", result.user.email);
       closeModalButton.click();
     });

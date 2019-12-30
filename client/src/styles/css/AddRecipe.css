@@ -47,6 +47,12 @@
   padding-left: 20%;
 }
 
+@media screen and (max-width: 800px) {
+  .add .words {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .add .words {
     padding-left: 0;
@@ -62,7 +68,7 @@
 
 @media screen and (max-width: 1200px) {
   .add .words input {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -72,6 +78,12 @@
 
 .add .words .addTitle .titleInput {
   height: 35px;
+}
+
+@media screen and (max-width: 800px) {
+  .add .words .addTitle .titleInput {
+    height: 43px;
+  }
 }
 
 .add .words .addDescription {
@@ -96,7 +108,7 @@
 
 @media screen and (max-width: 1200px) {
   .add .words .addIngredients .ingredientsInput {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -115,7 +127,7 @@
 
 @media screen and (max-width: 1200px) {
   .add .words .addDirections .directionsInput {
-    width: 100%;
+    width: 90%;
   }
 }
 

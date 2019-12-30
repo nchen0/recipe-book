@@ -21,10 +21,13 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    console.log("called");
+    console.log("loggedIN data: ", loginData.loggedIn);
     if (localStorage.getItem("username")) {
+      console.log("came in here");
       setLogin({ loggedIn: true });
     }
-  }, []);
+  }, [loginData.loggedIn]);
 
   const inputQuery = e => {
     setQuery(e.target.value);
@@ -49,7 +52,6 @@ const Navbar = () => {
       <Link class="navbar-brand center-logo" to={"/"}>
         <img src="../img/center-logo.png" />
       </Link>
-
       <button
         class="navbar-toggler"
         type="button"
@@ -85,36 +87,64 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {!loggedIn ? (
-        <div class="dropdown">
-          <img
-            class="dropdown-toggle"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            src="../img/login.png"
-          ></img>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
-              Login
-            </a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
-              Register
-            </a>
-            <Link class="dropdown-item" to={"/my-recipes"}>
-              My Recipes
-            </Link>
-            <Link class="dropdown-item" to={"/add"}>
-              Add
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <Link class="nav-link login-logo logout-logo" to={"#"} onClick={logout}>
-          <img src="../img/logout.png" height="75px" width="200px" />
-        </Link>
-      )}
+      {/* {loginData.loggedIn ?  */}
+      {/* // <div class="dropdown">
+        //   <img */}
+      {/* //     class="dropdown-toggle"
+        //     id="dropdownMenuButton"
+        //     data-toggle="dropdown"
+        //     aria-haspopup="true"
+        //     aria-expanded="false"
+        //     src="../img/login.png"
+        //   ></img> */}
+      {/* //   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        //     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
+        //       Login
+        //     </a>
+        //     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">
+        //       Register
+        //     </a>
+        //     <Link class="dropdown-item" to={"/my-recipes"}>
+        //       My Recipes
+        //     </Link>
+        //     <Link class="dropdown-item" to={"/add"}>
+        //       Add
+        //     </Link>
+        //   </div>
+        // </div> */}
+      <ul class="right-nav">
+        <li class="nav-item right-nav-item">
+          <Link class="nav-link " to={"/add"}>
+            Add
+          </Link>
+        </li>
+        <li class="nav-item right-nav-item">
+          <Link class="nav-link " to={"/my-recipes"}>
+            My Recipes
+          </Link>
+        </li>
+        <li class="nav-item right-nav-item">
+          {loginData.loggedIn ? (
+            <img
+              src="../img/logout.png"
+              height="75px"
+              width="200px"
+              onClick={logout}
+              class="dropdown-toggle"
+            />
+          ) : (
+            <img
+              class="dropdown-toggle"
+              id="dropdownMenuButton"
+              aria-haspopup="true"
+              aria-expanded="false"
+              src="../img/login.png"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            ></img>
+          )}
+        </li>
+      </ul>
       <LoginModal />
     </nav>
   );

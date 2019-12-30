@@ -47,3 +47,28 @@
     width: 100%;
   }
 }
+
+// Right navbar
+.right-nav {
+  display: flex;
+  list-style: none;
+  font-size: 23px;
+  margin-top: 20px;
+  padding-left: 10px;
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+}
+
+.right-nav a {
+  color: rgba(0, 0, 0, 0.548);
+}
+
+.right-nav-item a {
+  padding-left: 3px;
+}
+
+.logout-logo img {
+  height: 45px;
+  width: 45px;
+}
