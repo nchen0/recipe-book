@@ -2,49 +2,49 @@
 require("dotenv").config();
 
 module.exports = {
-  development: {
-    client: "mysql",
-    connection: {
-      host: "127.0.0.1",
-      user: process.env.USERNAME,
-      password: process.env.PASSWORD,
-      database: "recipebook"
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: "./data/migrations"
-    },
-    seeds: {
-      directory: "./data/seeds"
-    }
-    // pool: {
-    //   afterCreate: (conn, done) => {
-    //     // runs after a connection is made to the sqlite engine
-    //     conn.run("PRAGMA foreign_keys = ON", done); // turn on FK enforcement
-    //   }
-    // }
-  },
   // development: {
-  //   client: "postgresql",
+  //   client: "mysql",
   //   connection: {
-  //     database: "recipebook",
-  //     user: "root",
-  //     password: "Alligator8"
+  //     host: "127.0.0.1",
+  //     user: process.env.USERNAME,
+  //     password: process.env.PASSWORD,
+  //     database: "recipebook"
   //   },
   //   useNullAsDefault: true,
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
   //   migrations: {
-  //     directory: "./data/migrations",
-  //     tableName: "knex_migrations"
+  //     directory: "./data/migrations"
   //   },
   //   seeds: {
   //     directory: "./data/seeds"
-  //   },
-  //   ssl: true
+  //   }
+  //   // pool: {
+  //   //   afterCreate: (conn, done) => {
+  //   //     // runs after a connection is made to the sqlite engine
+  //   //     conn.run("PRAGMA foreign_keys = ON", done); // turn on FK enforcement
+  //   //   }
+  //   // }
   // },
+  development: {
+    client: "postgresql",
+    connection: {
+      database: "recipebook",
+      user: process.env.DB_USERNAME,
+      password: process.env.PASSWORD
+    },
+    useNullAsDefault: true,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      directory: "./data/migrations",
+      tableName: "knex_migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
+    },
+    ssl: true
+  },
   production: {
     client: "postgresql",
     connection:

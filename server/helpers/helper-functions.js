@@ -30,7 +30,7 @@ function validateUser(req) {
 function validateRecipe(req) {
   const newRecipe = req.body;
   const schema = Joi.object({
-    title: Joi.string()
+    name: Joi.string()
       .min(3)
       .required(),
     ingredients: Joi.string()
@@ -38,7 +38,10 @@ function validateRecipe(req) {
       .required(),
     directions: Joi.string()
       .min(5)
-      .required()
+      .required(),
+    sourceURL: Joi.string(),
+    pictureURL: Joi.string(),
+    owner: Joi.string()
   });
   return schema.validate(newRecipe);
 }

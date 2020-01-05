@@ -29,7 +29,8 @@ router.get("/:id", (req, res) => {
 router.post("/add", (req, res) => {
   const validatedRecipe = validateRecipe(req);
   if (validatedRecipe.error) {
-    return res.status(400).send(validatedUser.error.details[0].message);
+    console.log("error: ", validatedRecipe.error);
+    return res.status(400).send(validatedRecipe.error.details[0].message);
   }
   db("recipes")
     .insert(req.body)
@@ -37,6 +38,7 @@ router.post("/add", (req, res) => {
       res.status(201).json(req.body);
     })
     .catch(err => {
+      console.log("err: ", err);
       res.status(500).json(err);
     });
 });
