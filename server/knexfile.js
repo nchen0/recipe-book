@@ -26,8 +26,11 @@ module.exports = {
   // },
   development: {
     client: "postgresql",
-    connection:
-      "postgres://lcnzumdanlsifl:d662e27b51a1b6e7c0d1a1a92b4ce047d665b794bd1e7172a72818c2534ce2b7@ec2-184-73-169-163.compute-1.amazonaws.com:5432/d7d5g9ngfc634a",
+    connection: {
+      database: "recipebook",
+      user: process.env.DB_USERNAME,
+      password: process.env.PASSWORD
+    },
     useNullAsDefault: true,
     pool: {
       min: 2,

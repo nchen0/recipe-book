@@ -53,7 +53,7 @@ const ViewRecipe = () => {
     let DB = process.env.REACT_APP_DB || "http://localhost:8000";
     let ingredients = "";
     recipe.extendedIngredients.forEach(ingredient => {
-      ingredients += `${ingredient.name},`;
+      ingredients += `${ingredient.originalString},`;
     });
     let directions = "";
     recipe.analyzedInstructions[0].steps.forEach(direction => {
@@ -71,14 +71,13 @@ const ViewRecipe = () => {
     axios
       .post(`${DB}/recipes/add`, newRecipe)
       .then(response => {
-        console.log("response: ", response);
         setLoading(false);
       })
       .catch(err => {
         setLoading(false);
       });
   };
-  console.log("recipe: ", recipe);
+
   return (
     <div class="container view-recipe">
       {recipe ? (
@@ -97,6 +96,11 @@ const ViewRecipe = () => {
             <li>
               <a href={recipe.sourceUrl}>Source</a>
             </li>
+            {loggedIn ? (
+              <button class="btn btn-success save-recipe-button" onClick={saveRecipe}>
+                Save Recipe
+              </button>
+            ) : null}
             <hr />
             <h4 class="ingredients-title">Ingredients</h4>
             {recipe.extendedIngredients.map(ingredient => {
@@ -111,11 +115,6 @@ const ViewRecipe = () => {
                 </div>
               );
             })}
-            {loggedIn ? (
-              <button class="btn btn-success" onClick={saveRecipe}>
-                Save Recipe
-              </button>
-            ) : null}
           </div>
         </div>
       ) : null}

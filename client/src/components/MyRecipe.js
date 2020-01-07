@@ -6,13 +6,13 @@ const MyRecipe = props => {
     <div className="card">
       <img
         src={props.recipe.pictureURL}
-        height="225px"
-        width="400px"
+        height="250px"
+        width="425px"
         class="recipeImage"
         alt="placeholder"
       />
-      <div>{props.recipe.name}</div>
-      <div>{props.recipe.ingredients}</div>
+      <div class="card-title">{props.recipe.name}</div>
+      {/* <div>{props.recipe.ingredients}</div> */}
     </div>
   );
 };

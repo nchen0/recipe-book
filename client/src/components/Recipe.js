@@ -54,7 +54,7 @@ const Recipe = ({ recipe }) => {
         <img
           src={recipe.image}
           height="250px"
-          width="400px"
+          width="425px"
           class="recipeImage"
           alt="placeholder"
         />
