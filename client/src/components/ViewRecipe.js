@@ -53,11 +53,11 @@ const ViewRecipe = () => {
     let DB = process.env.REACT_APP_DB || "http://localhost:8000";
     let ingredients = "";
     recipe.extendedIngredients.forEach(ingredient => {
-      ingredients += `${ingredient.originalString},`;
+      ingredients += `${ingredient.originalString}&`;
     });
     let directions = "";
     recipe.analyzedInstructions[0].steps.forEach(direction => {
-      directions += `${direction.step}.`;
+      directions += `${direction.step}&`;
     });
     let newRecipe = {
       name: recipe.title,

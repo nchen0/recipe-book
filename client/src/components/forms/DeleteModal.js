@@ -15,7 +15,7 @@ const DeleteModal = ({ myRecipe }) => {
 
   return (
     <div
-      class="modal fade"
+      class="delete-modal modal fade"
       id="deleteModal"
       tabindex="-1"
       role="dialog"
@@ -24,15 +24,15 @@ const DeleteModal = ({ myRecipe }) => {
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          {/* <div class="modal-header">
             <h5 class="modal-title" id="deleteModalLabel">
               Delete Recipe
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">Are you sure you want to delete the recipe?</div>
+          </div> */}
+          <div class="modal-body">Are you sure you want to delete this?</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary closeDelete" data-dismiss="modal">
               Close

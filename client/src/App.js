@@ -6,6 +6,7 @@ import "./styles/css/LoginModal.css";
 import "./styles/css/Navbar.css";
 import "./styles/css/Navbar2.css";
 import "./styles/css/EditRecipe.css";
+import "./styles/css/Modal.css";
 import Navbar from "./components/Navbar";
 import RecipeContextProvider from "./contexts/RecipeContext";
 import Recipes from "./components/Recipes";

@@ -1,11 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const EditRecipe = props => {
-  console.log("props: ", props);
+  const [input, setInput] = useState({});
+  useEffect(() => {
+    setInput({ name: props.location.myRecipe.name });
+  }, []);
+
   const saveRecipe = () => {};
 
-  const inputValue = () => {};
+  const inputValue = e => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
   return (
     <div class="words">
       <div class="addTitle">
@@ -16,6 +22,7 @@ const EditRecipe = props => {
           name="name"
           placeholder="Add a title"
           onChange={inputValue}
+          value={input.name}
         />
       </div>
       <div class="addIngredients">

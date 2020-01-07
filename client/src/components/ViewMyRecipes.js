@@ -5,25 +5,27 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ViewMyRecipes = () => {
+  window.scrollTo(0, 0);
   let DB = process.env.REACT_APP_DB || "http://localhost:8000";
   let directionsArr = [];
   let ingredientsArr = [];
   const { myRecipes, setMyRecipes } = useContext(RecipeContext);
   useEffect(() => {
-    axios.get(`${DB}/recipes`).then(result => {
-      let user = localStorage.getItem("username");
-      let recipes = result.data.filter(recipe => recipe.owner === user);
-      setMyRecipes(recipes);
-    });
+    if (!myRecipes.length) {
+      axios.get(`${DB}/recipes`).then(result => {
+        let user = localStorage.getItem("username");
+        let recipes = result.data.filter(recipe => recipe.owner === user);
+        setMyRecipes(recipes);
+      });
+    }
   }, []);
-  console.log("myRecipes: ", myRecipes);
 
   let id = Number(window.location.pathname.split("/")[2]);
   const myRecipe = myRecipes[id];
 
   if (myRecipe) {
-    directionsArr = myRecipe.directions.split(".").filter(direction => direction !== "");
-    ingredientsArr = myRecipe.ingredients.split(",");
+    directionsArr = myRecipe.directions.split("&").filter(direction => direction !== "");
+    ingredientsArr = myRecipe.ingredients.split("&");
     return (
       <div class="container view-recipe">
         <img
@@ -42,7 +44,7 @@ const ViewMyRecipes = () => {
               <a href={myRecipe.sourceUrl}>Source</a>
             </li>
           ) : null}
-          <Link class="btn btn-secondary edit-button" to={{ pathname: "/edit", id }}>
+          <Link class="btn btn-secondary edit-button" to={{ pathname: "/edit", id, myRecipe }}>
             <button class="btn btn-secondary">Edit</button>
           </Link>
 
@@ -61,7 +63,7 @@ const ViewMyRecipes = () => {
           <h4 class="directions-title">Directions</h4>
           {directionsArr.map((direction, i) => {
             return (
-              <div>
+              <div class="specific-instruction">
                 {i + 1}. {direction}
               </div>
             );
