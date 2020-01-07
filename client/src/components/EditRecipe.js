@@ -41,7 +41,7 @@ const EditRecipe = props => {
         <button class="btn btn-success" onClick={saveRecipe}>
           Save
         </button>
-        <Link class="btn btn-secondary" to={{ pathname: `/my-recipes/${props.location.id}` }}>
+        <Link class="btn btn-secondary" to={{ pathname: `/my-recipe/${props.location.id}` }}>
           Cancel
         </Link>
       </div>
