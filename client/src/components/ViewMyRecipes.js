@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 import DeleteModal from "./forms/DeleteModal";
 import { Link } from "react-router-dom";
@@ -9,6 +9,11 @@ const ViewMyRecipes = () => {
   const myRecipe = myRecipes[id];
   let directionsArr = myRecipe.directions.split(".").filter(direction => direction !== "");
   let ingredientsArr = myRecipe.ingredients.split(",");
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   console.log("myRecipes: ", myRecipes);
+  // }, []);
   return (
     <div class="container view-recipe">
       <img
@@ -27,11 +32,11 @@ const ViewMyRecipes = () => {
             <a href={myRecipe.sourceUrl}>Source</a>
           </li>
         ) : null}
-        <Link class="btn btn-secondary" to={"/edit"}>
+        <Link class="btn btn-secondary edit-button" to={{ pathname: "/edit", id }}>
           <button class="btn btn-secondary">Edit</button>
         </Link>
 
-        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+        <button class="btn btn-danger delete-button" data-toggle="modal" data-target="#deleteModal">
           Delete
         </button>
         <hr />

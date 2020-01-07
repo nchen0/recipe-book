@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-const EditRecipe = () => {
+const EditRecipe = props => {
+  console.log("props: ", props);
   const saveRecipe = () => {};
 
   const inputValue = () => {};
@@ -40,7 +41,7 @@ const EditRecipe = () => {
         <button class="btn btn-success" onClick={saveRecipe}>
           Save
         </button>
-        <Link class="btn btn-secondary" to={"/my-recipes"}>
+        <Link class="btn btn-secondary" to={{ pathname: `/my-recipes/${props.location.id}` }}>
           Cancel
         </Link>
       </div>

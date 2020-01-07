@@ -19,3 +19,13 @@
 .view-recipe .save-recipe-button {
   margin-top: 15px;
 }
+
+.view-recipe .edit-button {
+  padding: 0;
+  width: 75px;
+  margin-right: 10px;
+}
+
+.view-recipe .delete-button {
+  width: 75px;
+}
