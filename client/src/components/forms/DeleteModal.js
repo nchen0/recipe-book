@@ -9,8 +9,15 @@ const DeleteModal = ({ myRecipe }) => {
   const deleteRecipe = e => {
     e.preventDefault();
     console.log("id is: ", id);
-    axios.delete(`${DB}/recipes/delete/${myRecipe.id}`).then(response => {});
-    window.location.href = "/my-recipes";
+    axios
+      .delete(`${DB}/recipes/delete/${myRecipe.id}`)
+      .then(response => {
+        console.log("response: ", response);
+      })
+      .catch(err => {
+        console.log("err: ", err);
+      });
+    // window.location.href = "/my-recipes";
   };
 
   return (
