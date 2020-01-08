@@ -28,6 +28,10 @@
   }
 }
 
+.dropdown:hover {
+  cursor: pointer;
+}
+
 .dropdown-toggle {
   width: 55px;
   height: 55px;
@@ -35,6 +39,7 @@
 
 .dropdown-menu {
   left: -89px;
+  margin-top: 12px;
 }
 
 @media screen and (max-width: 600px) {

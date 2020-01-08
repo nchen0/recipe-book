@@ -17,7 +17,6 @@ import AuthContextProvider from "./contexts/AuthContext";
 import ViewMyRecipes from "./components/ViewMyRecipes";
 import ViewRecipe from "./components/ViewRecipe";
 import EditRecipe from "./components/EditRecipe";
-import LoadingOverlay from "react-loading-overlay";
 
 function App() {
   return (

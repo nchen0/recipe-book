@@ -12,12 +12,11 @@ const DeleteModal = ({ myRecipe }) => {
     axios
       .delete(`${DB}/recipes/delete/${myRecipe.id}`)
       .then(response => {
-        console.log("response: ", response);
+        window.location.href = "/my-recipes";
       })
       .catch(err => {
         console.log("err: ", err);
       });
-    // window.location.href = "/my-recipes";
   };
 
   return (
