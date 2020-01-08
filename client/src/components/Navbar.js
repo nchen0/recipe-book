@@ -21,10 +21,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log("called");
-    console.log("loggedIN data: ", loginData.loggedIn);
     if (localStorage.getItem("username")) {
-      console.log("came in here");
       setLogin({ loggedIn: true });
     }
   }, [loginData.loggedIn]);
@@ -125,13 +122,33 @@ const Navbar = () => {
         </li>
         <li class="nav-item right-nav-item">
           {loginData.loggedIn ? (
-            <img
-              src="../img/logout.png"
-              height="75px"
-              width="200px"
-              onClick={logout}
-              class="dropdown-toggle"
-            />
+            // <img
+            //   src="../img/logout.png"
+            //   height="75px"
+            //   width="200px"
+            //   onClick={logout}
+            //   class="dropdown-toggle"
+            // />
+
+            <div class="dropdown">
+              <img
+                class="dropdown-toggle"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                src="../img/logout.png"
+              ></img>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">
+                  {localStorage.getItem("username")}
+                </a>
+                <hr />
+                <Link class="dropdown-item" onClick={logout} to={"/"}>
+                  Logout
+                </Link>
+              </div>
+            </div>
           ) : (
             <img
               class="dropdown-toggle"

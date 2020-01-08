@@ -27,35 +27,36 @@ const LoginModal = () => {
   const googleLogin = e => {
     e.preventDefault();
     auth.signInWithPopup(provider).then(result => {
-      console.log("came in here");
       setLogin({ loggedIn: true });
       localStorage.setItem("username", result.user.email);
       closeModalButton.click();
     });
   };
 
-  const submitAccount = () => {
+  const submitAccount = e => {
+    e.preventDefault();
     setLoading(true);
     const user = input;
     delete user.verifyPassword;
     if (clickRegister) {
       // Creating new account, so will hit the register api:
       axios.post(`${DB}/auth/register`, user).then(() => {
-        setLogin({ ...loginData, loggedIn: true });
-        closeModalButton.click();
+        setLogin({ loggedIn: true });
         localStorage.setItem("username", user.username);
+
+        closeModalButton.click();
       });
     } else {
       axios
         .post(`${DB}/auth/login`, user)
         .then(response => {
-          setLogin({ ...loginData, loggedIn: true });
-          closeModalButton.click();
+          setLogin({ loggedIn: true });
           localStorage.setItem("username", user.username);
+
+          closeModalButton.click();
           setLoading(false);
         })
         .catch(err => {
-          console.log("error is: ", err);
           setLoading(false);
         });
     }
