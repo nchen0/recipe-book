@@ -16,13 +16,13 @@
   margin-bottom: 30px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .card {
     min-width: 0;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .card .recipeImage {
     max-width: 100%;
   }
@@ -75,7 +75,7 @@
 
 .centered {
   position: absolute;
-  top: 38%;
+  top: 308px;
   left: 49%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);

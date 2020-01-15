@@ -37,6 +37,10 @@
   height: 55px;
 }
 
+.dropdown-toggle:hover {
+  cursor: pointer;
+}
+
 .dropdown-menu {
   left: -89px;
   margin-top: 12px;

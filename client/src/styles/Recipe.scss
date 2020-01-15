@@ -12,11 +12,11 @@
   margin-right: 15px;
   margin-bottom: 30px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 450px) {
     min-width: 0;
   }
   .recipeImage {
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 450px) {
       max-width: 100%;
     }
   }
@@ -61,7 +61,7 @@
 
 .centered {
   position: absolute;
-  top: 38%;
+  top: 308px;
   left: 49%;
   transform: translate(-50%, -50%);
   color: rgba(255, 255, 255, 0.911);
