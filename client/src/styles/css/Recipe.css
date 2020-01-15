@@ -16,6 +16,18 @@
   margin-bottom: 30px;
 }
 
+@media screen and (max-width: 400px) {
+  .card {
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card .recipeImage {
+    max-width: 100%;
+  }
+}
+
 .card .card-title {
   font-size: 18px;
   display: -webkit-box;
